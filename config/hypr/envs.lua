@@ -35,13 +35,13 @@ hl.env("XDG_SESSION_DESKTOP","Hyprland")
 
 
 -- hl.config({
---   xwayland {
---    force_zero_scaling = true
---  }
+--   xwayland = {
+--    force_zero_scaling = true,
+--  },
 --
 -- -- Don't show update on first launch
---   ecosystem {
---     no_update_news = true
---   }
+--   ecosystem = {
+--     no_update_news = true,
+--   },
 -- })
 

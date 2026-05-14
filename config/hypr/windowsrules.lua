@@ -69,8 +69,8 @@ hl.window_rule({
 hl.window_rule({
   match = {
     class = "(xdg-desktop-portal-gtk)",
-    title = "match:title ^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
-",
+    title = [[match:title ^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
+    ]],
   },
   tag = "+floating-window",
 })
