@@ -18,61 +18,72 @@ rofiDir = "~/.local/bin"
 scrDir = "~/.local/bin"
 
 -- Apps
-hl.bind("SUPER + Return", hl.dsp.exec_cmd("uwsm-app -- $terminal --dir="$(cwd-terminal)""))
-hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
-hl.bind("SUPER + E", hl.dsp.exec_cmd("uwsm app -- nautilus --new-window"))
-hl.bind("SUPER + M", hl.dsp.exec_cmd(focus .. " spotify-lancher"))
-hl.bind("SUPER + D", hl.dsp.exec_cmd("uwsm app --  vesktop"))
-hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
-hl.bind("SUPER + slash", hl.dsp.exec_cmd("uwsm app -- bitwarden-desktop"))
-hl.bind("SUPER + C", hl.dsp.exec_cmd("uwsm app -- zeditor"))
-hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(terminal .. " -e lazydocker"))
-hl.bind("ALT + slash", hl.dsp.exec_cmd(terminal .. " -e btop"))
-hl.bind("ALT + M", hl.dsp.exec_cmd(terminal .. " -e rmpc"))
-hl.bind("ALT + Q", hl.dsp.exec_cmd(terminal .. " -e yazi"))
-hl.bind("ALT + N", hl.dsp.exec_cmd(terminal .. " -e nvim"))
-hl.bind("SUPER + S", hl.dsp.exec_cmd(terminal .. " --class=Wiremix -e wiremix"))
-hl.bind("SUPER + ALT + M", hl.dsp.exec_cmd("easyeffects"))
+hl.bind(
+	"SUPER + Return",
+	hl.dsp.exec_cmd("uwsm-app -- " .. terminal .. " --dir='$(cwd-terminal)'"),
+	{ description = "Terminal" }
+)
+hl.bind("SUPER + B", hl.dsp.exec_cmd(browser), { description = "Browser" })
+hl.bind("SUPER + E", hl.dsp.exec_cmd("uwsm app -- nautilus --new-window"), { Description = "File manager" })
+hl.bind("SUPER + M", hl.dsp.exec_cmd(focus .. " spotify-launcher"), { description = "Music" })
+hl.bind("SUPER + D", hl.dsp.exec_cmd("uwsm app --  vesktop"), { description = "Discord" })
+hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"), { description = "Obsidian" })
+hl.bind("SUPER + slash", hl.dsp.exec_cmd("uwsm app -- bitwarden-desktop"), { description = "Passwords" })
+hl.bind("SUPER + C", hl.dsp.exec_cmd("uwsm app -- zeditor"), { description = "Zed" })
+hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(terminal .. " -e lazydocker"), { description = "Docker" })
+hl.bind("ALT + slash", hl.dsp.exec_cmd(terminal .. " -e btop"), { description = "Activity" })
+hl.bind("ALT + M", hl.dsp.exec_cmd(terminal .. " -e rmpc"), { description = "rmpc" })
+hl.bind("ALT + Q", hl.dsp.exec_cmd(terminal .. " -e yazi"), { description = "yazi" })
+hl.bind("ALT + N", hl.dsp.exec_cmd(terminal .. " -e nvim"), { description = "Neovim" })
+hl.bind("SUPER + S", hl.dsp.exec_cmd(terminal .. " --class=Wiremix -e wiremix"), { description = "Wiremix" })
+hl.bind("SUPER + ALT + M", hl.dsp.exec_cmd("easyeffects"), { description = "Easyeffects" })
 
 -- WebApps
-hl.bind("SUPER + A", hl.dsp.exec_cmd(webapp .. " 'https://perplexity.ai'"))
-hl.bind("SUPER + SHIFT + A", hl.dsp.exec_cmd(webapp .. " 'https://chatgpt.com'"))
-hl.bind("SUPER + CTRL + A", hl.dsp.exec_cmd(webapp .. " 'https://gemini.google.com'"))
--- hl.bind("SUPER + ALT + A", hl.dsp.exec_cmd(webapp .. " 'https://grok.com'"))
-hl.bind("ALT + C", hl.dsp.exec_cmd(webapp .. " 'https://calendar.google.com'"))
-hl.bind("SUPER + G", hl.dsp.exec_cmd(webapp .. " 'https://github.com/vyrx-dev'"))
-hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd(webapp .. " 'https://mail.google.com/mail/u/1'"))
-hl.bind("SUPER + Y", hl.dsp.exec_cmd(webapp .. " 'https://youtube.com'"))
-hl.bind("SUPER + W", hl.dsp.exec_cmd(webapp .. " 'https://web.whatsapp.com'"))
-hl.bind("SUPER + X", hl.dsp.exec_cmd(webapp .. " 'https://x.com'"))
-hl.bind("SUPER + Z", hl.dsp.exec_cmd(webapp .. " 'https://www.linkedin.com/feed'"))
-hl.bind("SUPER + T", hl.dsp.exec_cmd(webapp .. " 'https://app.todoist.com'"))
-hl.bind("SUPER + BACKSLASH", hl.dsp.exec_cmd(webapp .. " 'https://devhints.io'"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd(webapp .. " 'https://perplexity.ai'"), { description = "Perplexity" })
+hl.bind("SUPER + SHIFT + A", hl.dsp.exec_cmd(webapp .. " 'https://chatgpt.com'"), { description = "ChatGPT" })
+hl.bind("SUPER + CTRL + A", hl.dsp.exec_cmd(webapp .. " 'https://gemini.google.com'"), { description = "Gemini" })
+-- hl.bind("SUPER + ALT + A", hl.dsp.exec_cmd(webapp .. " 'https://grok.com'"), { description = "Grok" })
+hl.bind("ALT + C", hl.dsp.exec_cmd(webapp .. " 'https://calendar.google.com'"), { description = "Calender" })
+hl.bind("SUPER + G", hl.dsp.exec_cmd(webapp .. " 'https://github.com/vyrx-dev'"), { description = "Github" })
+hl.bind(
+	"SUPER + SHIFT + G",
+	hl.dsp.exec_cmd(webapp .. " 'https://mail.google.com/mail/u/1'"),
+	{ description = "Gmail" }
+)
+hl.bind("SUPER + Y", hl.dsp.exec_cmd(webapp .. " 'https://youtube.com'"), { description = "YouTube" })
+hl.bind("SUPER + W", hl.dsp.exec_cmd(webapp .. " 'https://web.whatsapp.com'"), { description = "WhatsApp" })
+hl.bind("SUPER + X", hl.dsp.exec_cmd(webapp .. " 'https://x.com'"), { description = "X" })
+hl.bind("SUPER + Z", hl.dsp.exec_cmd(webapp .. " 'https://www.linkedin.com/feed'"), { description = "Linkedin" })
+hl.bind("SUPER + T", hl.dsp.exec_cmd(webapp .. " 'https://app.todoist.com'"), { description = "Todoist" })
+hl.bind("SUPER + BACKSLASH", hl.dsp.exec_cmd(webapp .. " 'https://devhints.io'"), { description = "Learn" })
 
 -- Tmux
 hl.bind("SUPER + SHIFT + RETURN", hl.dsp.exec_cmd(terminal .. " -e tmux a"))
 hl.bind("SUPER + ALT + RETURN", hl.dsp.exec_cmd(terminal .. " -e tmux new -As main"))
 
-hl.bind("SUPER + SHIFT + N", hl.dsp.exec_cmd(rofiDir .. "/wifi"))
-hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
-hl.bind("SUPER + SHIFT + I", hl.dsp.exec_cmd("kitty --title webapp-install -e $scrDir/webapp-install"))
+hl.bind("SUPER + SHIFT + N", hl.dsp.exec_cmd(rofiDir .. "/wifi"), { description = "WiFi Menu" })
+hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t -sw"), { description = "Notification Centre" })
+hl.bind(
+	"SUPER + SHIFT + I",
+	hl.dsp.exec_cmd("kitty --title webapp-install -e " .. scrDir .. "/webapp-install"),
+	{ description = "Web App Install" }
+)
 
 -- Close windows
 hl.bind("SUPER + Q", hl.dsp.window.close())
 
 -- Rofi
-hl.bind("ALT + comma", hl.dsp.exec_cmd(rofiDir .. "/clipboard"))
-hl.bind("ALT + period", hl.dsp.exec_cmd(rofiDir .. "/emoji"))
-hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd(rofiDir .. "/rofibeats"))
-hl.bind("ALT + SPACE", hl.dsp.exec_cmd(rofiDir .. "/rofisearch"))
-hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"))
-hl.bind("SUPER + CTRL + B", hl.dsp.exec_cmd(rofiDir .. "/power-profiles"))
+hl.bind("ALT + comma", hl.dsp.exec_cmd(rofiDir .. "/clipboard"), { Description = "clipboard" })
+hl.bind("ALT + period", hl.dsp.exec_cmd(rofiDir .. "/emoji"), { description = "emoji" })
+hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd(rofiDir .. "/rofibeats"), { description = "rofibeats" })
+hl.bind("ALT + SPACE", hl.dsp.exec_cmd(rofiDir .. "/rofisearch"), { description = "Find" })
+hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"), { description = "app-launcher" })
+hl.bind("SUPER + CTRL + B", hl.dsp.exec_cmd(rofiDir .. "/power-profiles"), { description = "Power Profiles" })
 
-
-hl.bind("SUPER + SHIFT + O", hl.dsp.exec_cmd(scrDir .. "/pop-window"))
+hl.bind("SUPER + SHIFT + O", hl.dsp.exec_cmd(scrDir .. "/pop-window"), { description = "Pop window out (float & pin)" })
 hl.bind("SUPER + SHIFT + SPACE", hl.dsp.exec_cmd(scrDir .. "/toggle-waybar"))
 hl.bind("SUPER + CTRL + N", hl.dsp.exec_cmd(scrDir .. "/nightlight"))
-hl.bind("SUPER + CTRL + I", hl.dsp.exec_cmd(scrDir .. "/toggle-idle"))
+hl.bind("SUPER + CTRL + I", hl.dsp.exec_cmd(scrDir .. "/toggle-idle"), { description = "Toggle Idle/Lock" })
 
 -- LocalSend
 hl.bind("SUPER + ALT + S", hl.dsp.exec_cmd("kitty --title share -e " .. scrDir .. "/fileshare file"))
@@ -80,52 +91,99 @@ hl.bind("SUPER + CTRL + S", hl.dsp.exec_cmd("kitty --title share -e " .. scrDir 
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("kitty --title share -e " .. scrDir .. "/fileshare clipboard"))
 
 -- Themes
-hl.bind("SUPER + CTRL + SPACE", hl.dsp.exec_cmd(rofiDir .. "/selectWall"))
-hl.bind("SUPER + ALT + SPACE", hl.dsp.exec_cmd(rofiDir .. "/wallPicker"))
-hl.bind("CTRL + ALT + SPACE", hl.dsp.exec_cmd(scrDir .. "/change-theme"))
-hl.bind("SUPER + CTRL + SHIFT + SPACE", hl.dsp.exec_cmd("symphony switch"))
-hl.bind("SUPER + CTRL + SHIFT + BACKSPACE", hl.dsp.exec_cmd("symphony switch --random"))
-hl.bind("SUPER + I", hl.dsp.exec_cmd("kitty --title symphony-tui -e symphony-tui"))
-hl.bind("SUPER + ALT + I", hl.dsp.exec_cmd("kitty --title symphony-browse -e symphony browse"))
+hl.bind("SUPER + CTRL + SPACE", hl.dsp.exec_cmd(rofiDir .. "/selectWall"), { description = "Matugen Themes Apply" })
+hl.bind("SUPER + ALT + SPACE", hl.dsp.exec_cmd(rofiDir .. "/wallPicker"), { description = "Wallpaper Picker" })
+hl.bind("CTRL + ALT + SPACE", hl.dsp.exec_cmd(scrDir .. "/change-theme"), { description = "Select awww wall" })
+hl.bind("SUPER + CTRL + SHIFT + SPACE", hl.dsp.exec_cmd("symphony switch"), { description = "Theme Switcher" })
+hl.bind(
+	"SUPER + CTRL + SHIFT + BACKSPACE",
+	hl.dsp.exec_cmd("symphony switch --random"),
+	{ description = "Random Theme" }
+)
+hl.bind("SUPER + I", hl.dsp.exec_cmd("kitty --title symphony-tui -e symphony-tui"), { description = "Symphony TUI" })
+hl.bind(
+	"SUPER + ALT + I",
+	hl.dsp.exec_cmd("kitty --title symphony-browse -e symphony browse"),
+	{ description = "Browse Themes" }
+)
 
 -- Current theme wallpaper cycling
-hl.bind("SUPER + ALT + up", hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper"))
-hl.bind("SUPER + ALT + right", hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper next"))
-hl.bind("SUPER + ALT + left", hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper prev"))
+hl.bind("SUPER + ALT + up", hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper"), { description = "Theme Wallpapers" })
+hl.bind("SUPER + ALT + right", hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper next"), { description = "Next Wallpaper" })
+hl.bind(
+	"SUPER + ALT + left",
+	hl.dsp.exec_cmd(scrDir .. "/cycle-wallpaper prev"),
+	{ description = "Previous Wallpaper" }
+)
 
 -- Power
-hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd(scrDir .. "/lock-screen"))
-hl.bind("SUPER + CTRL + up", hl.dsp.exec_cmd(scrDir .. "/graceful-reboot"))
-hl.bind("SUPER + BACKSPACE", hl.dsp.exec_cmd(scrDir .. "/toggle-terminal-transparency"))
-hl.bind("SUPER + CTRL + BACKSPACE", hl.dsp.exec_cmd(scrDir .. "/toggle-focus"))
-hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd(rofiDir .. "/powermenu"))
-hl.bind("XF86PowerOff", hl.dsp.exec_cmd(rofiDir .. "/powermenu"), {locked = true})
+hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd(scrDir .. "/lock-screen"), { description = "Lock screen" })
+hl.bind("SUPER + CTRL + up", hl.dsp.exec_cmd(scrDir .. "/graceful-reboot"), { description = "Reboot" })
+hl.bind(
+	"SUPER + BACKSPACE",
+	hl.dsp.exec_cmd(scrDir .. "/toggle-terminal-transparency"),
+	{ description = "Terminal Transparency" }
+)
+hl.bind(
+	"SUPER + CTRL + BACKSPACE",
+	hl.dsp.exec_cmd(scrDir .. "/toggle-focus"),
+	{ description = "Toggle Focus & Vibe Mode" }
+)
+hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd(rofiDir .. "/powermenu"), { description = "Power Menu" })
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd(rofiDir .. "/powermenu"), { locked = true }, { description = "Power Menu" })
 
 -- Kill
-hl.bind("SUPER + SHIFT + K", hl.dsp.exec_cmd("hyprctl kill"))
-hl.bind("SUPER + K", hl.dsp.exec_cmd(rofiDir .. "/keyhints"))
+hl.bind("SUPER + SHIFT + K", hl.dsp.exec_cmd("hyprctl kill"), { description = "Kill Application" })
+hl.bind("SUPER + K", hl.dsp.exec_cmd(rofiDir .. "/keyhints"), { description = "Show All Keybindings" })
 
 -- Screenshots
-hl.bind("SUPER + P", hl.dsp.exec_cmd(scrDir .. "/screenshot"))
-hl.bind("SUPER + SHIFT + PRINT", hl.dsp.exec_cmd(scrDir .. "/screenshot smart clipboard"))
+hl.bind("SUPER + P", hl.dsp.exec_cmd(scrDir .. "/screenshot"), { description = "Screenshot with editing" })
+hl.bind(
+	"SUPER + SHIFT + PRINT",
+	hl.dsp.exec_cmd(scrDir .. "/screenshot smart clipboard"),
+	{ description = "Screenshot to clipboard" }
+)
 
 -- Screen Recordings
-hl.bind("SUPER + R", hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-desktop-audio"))
-hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-microphone-audio"))
-hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam"))
+hl.bind("SUPER + R", hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-desktop-audio"), { description = "Record Screen" })
+hl.bind(
+	"SUPER + SHIFT + R",
+	hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-microphone-audio"),
+	{ description = "Record + Mic" }
+)
+hl.bind(
+	"SUPER + ALT + R",
+	hl.dsp.exec_cmd(scrDir .. "/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam"),
+	{ description = "Record + Mic + Webcam" }
+)
 
 -- Conversion
-hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd(scrDir .. "/video-to-gif"))
+hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd(scrDir .. "/video-to-gif"), { description = "Convert mp4 video to gif" })
 
 -- Color picker
-hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"))
+hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"), { description = "Color Picker" })
 
 -- Laptop Brightness adjusts (very useful for keyboard knob)
-hl.bind("SUPER + ALT + XF86AudioRaiseVolume", hl.dsp.exec_cmd(osdclient .. " --brightness raise"))
-hl.bind("SUPER + ALT + XF86AudioLowerVolume", hl.dsp.exec_cmd(osdclient .. " --brightness lower"))
+hl.bind(
+	"SUPER + ALT + XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd(osdclient .. " --brightness raise"),
+	{ description = "Brightness Up" }
+)
+hl.bind(
+	"SUPER + ALT + XF86AudioLowerVolume",
+	hl.dsp.exec_cmd(osdclient .. " --brightness lower"),
+	{ description = "Brightness Down" }
+)
 
 -- External Monitor (for more options use "ddcutil capabilities")
-hl.bind("SUPER + XF86AudioRaiseVolume", hl.dsp.exec_cmd("ddcutil setvcp 10 + 10"))
-hl.bind("SUPER + XF86AudioLowerVolume", hl.dsp.exec_cmd("ddcutil setvcp 10 - 10"))
-hl.bind("SUPER + F1", hl.dsp.exec_cmd(scrDir .. "/toggle-monitor"))
-
+hl.bind(
+	"SUPER + XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("ddcutil setvcp 10 + 10"),
+	{ description = "Monitor Brightness Up" }
+)
+hl.bind(
+	"SUPER + XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("ddcutil setvcp 10 - 10"),
+	{ description = "Monitor Brightness Down" }
+)
+hl.bind("SUPER + F1", hl.dsp.exec_cmd(scrDir .. "/toggle-monitor"), { description = "Toggle Monitor Power" })
