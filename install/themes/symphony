@@ -1,0 +1,448 @@
+#!/bin/bash
+# ╔═══════════════════════════════════════════════════════════════════════════╗
+# ║   ███████╗██╗   ██╗███╗   ███╗██████╗ ██╗  ██╗ ██████╗ ███╗   ██╗██╗   ██╗║
+# ║   ██╔════╝╚██╗ ██╔╝████╗ ████║██╔══██╗██║  ██║██╔═══██╗████╗  ██║╚██╗ ██╔╝║
+# ║   ███████╗ ╚████╔╝ ██╔████╔██║██████╔╝███████║██║   ██║██╔██╗ ██║ ╚████╔╝ ║
+# ║   ╚════██║  ╚██╔╝  ██║╚██╔╝██║██╔═══╝ ██╔══██║██║   ██║██║╚██╗██║  ╚██╔╝  ║
+# ║   ███████║   ██║   ██║ ╚═╝ ██║██║     ██║  ██║╚██████╔╝██║ ╚████║   ██║   ║
+# ║   ╚══════╝   ╚═╝   ╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ║
+# ╚═══════════════════════════════════════════════════════════════════════════╝
+# https://github.com/vyrx-dev/symphony
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SYMPHONY_REPO="${SYMPHONY_REPO:-$HOME/symphony}"
+THEMES_DIR="$SYMPHONY_REPO/themes"
+HOOKS_DIR="$SCRIPT_DIR/hooks"
+SYMPHONY_CONFIG="$HOME/.config/symphony"
+CURRENT_LINK="$SYMPHONY_CONFIG/current"
+THEME_FILE="$SYMPHONY_CONFIG/.current-theme"
+
+VERSION="3.0.0"
+
+# colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+RESET='\033[0m'
+
+ok()   { echo -e "${GREEN}[OK]${RESET} $1"; }
+err()  { echo -e "${RED}[ERROR]${RESET} $1" >&2; }
+info() { echo -e "${BLUE}[INFO]${RESET} $1"; }
+
+notify() {
+	command -v notify-send &>/dev/null && notify-send "$1" "$2" ${3:+-i "$3"}
+}
+
+current_theme() {
+	cat "$THEME_FILE" 2>/dev/null || echo "dynamic"
+}
+
+theme_exists() {
+	[[ -d "$THEMES_DIR/$1" ]]
+}
+
+list_themes() {
+	echo "dynamic"
+	for dir in "$THEMES_DIR"/*/; do
+		name=$(basename "$dir")
+		[[ "$name" != "dynamic" && "$name" != "Wallpapers" ]] && echo "$name"
+	done | sort
+}
+
+run_hooks() {
+	echo "Running hooks..."
+	for hook in "$HOOKS_DIR"/*.sh; do
+		[[ -x "$hook" ]] || chmod +x "$hook"
+		local name
+		name=$(basename "$hook" .sh)
+		if CURRENT_LINK="$CURRENT_LINK" THEMES_DIR="$THEMES_DIR" bash "$hook" 2>/dev/null; then
+			echo -e "  ${GREEN}✓${RESET} ${name#*-}"
+		else
+			echo -e "  ${CYAN}–${RESET} ${name#*-}"
+		fi
+	done
+}
+
+set_wallpaper() {
+	local theme="$1"
+	
+	# Dynamic theme uses ~/Wallpapers with matugen
+	if [[ "$theme" == "dynamic" ]]; then
+		"$HOME/.local/bin/change-theme"
+		return
+	fi
+	
+	local wall
+	wall=$(find "$THEMES_DIR/$theme/backgrounds" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) 2>/dev/null | sort -V | head -1)
+	[[ -z "$wall" ]] && return
+
+	awww query &>/dev/null || {
+		awww-daemon --format xrgb &
+		sleep 0.3
+	}
+	awww img "$wall" --transition-type center --transition-fps 120 --transition-duration 0.8
+	ln -sfn "backgrounds/$(basename "$wall")" "$THEMES_DIR/$theme/wallpaper"
+}
+
+# ╭───────────────────────────────────────────────────────────────────────╮
+# │ Commands                                                              │
+# ╰───────────────────────────────────────────────────────────────────────╯
+
+get_random_theme() {
+	local themes=()
+	mapfile -t themes < <(list_themes)
+	[[ ${#themes[@]} -eq 0 ]] && { err "No themes found"; exit 1; }
+	
+	local current=$(current_theme)
+	local theme="${themes[RANDOM % ${#themes[@]}]}"
+	
+	# Avoid current theme if possible
+	if [[ ${#themes[@]} -gt 1 ]]; then
+		for _ in {1..10}; do
+			[[ "$theme" != "$current" ]] && break
+			theme="${themes[RANDOM % ${#themes[@]}]}"
+		done
+	fi
+	echo "$theme"
+}
+
+cmd_switch() {
+	local theme="$1"
+    [[ "$theme" == "--random" ]] || [[ "$theme" == "-r" ]] && theme=$(get_random_theme)
+
+	if [[ -z "$theme" ]]; then
+		command -v rofi &>/dev/null || { err "rofi is required"; exit 1; }
+		local theme_picker="$HOME/.local/bin/themePicker"
+		if [[ -x "$theme_picker" ]]; then
+			exec "$theme_picker"
+		else
+			theme=$(list_themes | rofi -dmenu -i -p "Theme" -config "$HOME/.config/rofi/config.rasi") || exit 0
+		fi
+	fi
+
+	[[ -z "$theme" ]] && exit 0
+	[[ "$theme" == "$(current_theme)" ]] && {
+		notify "Already using $theme"
+		exit 0
+	}
+	theme_exists "$theme" || {
+		err "Theme not found: $theme"
+		exit 1
+	}
+
+	info "Switching to $theme..."
+	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
+
+	mkdir -p "$SYMPHONY_CONFIG"
+	echo "$theme" > "$THEME_FILE"
+	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
+
+	# Dynamic theme runs hooks via change-theme -> symphony reload
+	if [[ "$theme" != "dynamic" ]]; then
+		run_hooks
+	fi
+
+	hyprctl keyword misc:disable_autoreload 0 &>/dev/null || true
+	set_wallpaper "$theme"
+
+	# Dynamic theme handles its own notification via change-theme script
+	if [[ "$theme" != "dynamic" ]]; then
+		notify "$theme" "" "$(readlink -f "$THEMES_DIR/$theme/wallpaper" 2>/dev/null)"
+	fi
+	ok "Switched to $theme"
+}
+
+cmd_reload() {
+	local theme
+	theme=$(current_theme)
+	info "Reloading $theme..."
+
+	mkdir -p "$SYMPHONY_CONFIG"
+	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
+
+	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
+	run_hooks
+	hyprctl keyword misc:disable_autoreload 0 &>/dev/null || true
+
+	ok "Reloaded $theme"
+}
+
+cmd_list() {
+	local current
+	current=$(current_theme)
+	echo ""
+	for theme in $(list_themes); do
+		if [[ "$theme" == "$current" ]]; then
+			echo -e "  ${GREEN}●${RESET} $theme (current)"
+		else
+			echo "  ○ $theme"
+		fi
+	done
+	echo ""
+}
+
+cmd_remove() {
+	local theme="$1"
+	[[ -z "$theme" ]] && { err "Usage: symphony remove <theme>"; exit 1; }
+	theme_exists "$theme" || { err "Not found: $theme"; exit 1; }
+	[[ "$theme" == "dynamic" ]] && { err "Can't remove dynamic theme"; exit 1; }
+
+	printf 'Delete %s? [y/N] ' "$theme"
+	read -r confirm
+	[[ "$confirm" != "y" ]] && exit 0
+
+	if [[ "$theme" == "$(current_theme)" ]]; then
+		local next
+		next=$(list_themes | grep -A1 "^$theme$" | tail -1)
+		[[ "$next" == "$theme" ]] && next=$(list_themes | head -1)
+		cmd_switch "$next"
+	fi
+
+	rm -rf "${THEMES_DIR:?}/$theme"
+	ok "Removed $theme"
+}
+
+cmd_fix() {
+	local theme
+	theme=$(current_theme)
+	info "Fixing symlinks..."
+	theme_exists "$theme" || { err "Theme '$theme' not found"; exit 1; }
+
+	mkdir -p "$SYMPHONY_CONFIG"
+	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
+	run_hooks
+	ok "Fixed $theme"
+}
+
+# Import command - delegates to symphony-import
+cmd_import() {
+	"$SCRIPT_DIR/symphony-import/import.sh" "$@"
+}
+
+cmd_update() {
+	info "Updating Symphony..."
+
+	# Backup current configs
+	local timestamp
+	timestamp=$(date +%Y-%m-%d_%H-%M)
+	local backup="$HOME/.config/symphony/backups/$timestamp"
+	mkdir -p "$backup"
+	cp -r "$HOME/.config/symphony" "$backup/symphony" 2>/dev/null || true
+	ok "Backed up to $backup"
+
+	# Pull latest
+	if ! git -C "$SYMPHONY_REPO" pull --ff-only; then
+		err "Git pull failed — resolve conflicts manually"
+		exit 1
+	fi
+	ok "Pulled latest changes"
+
+	# Redeploy configs
+	if [[ -f "$SYMPHONY_REPO/install/deploy.sh" ]]; then
+		source "$SYMPHONY_REPO/install/deploy.sh"
+		ok "Configs redeployed"
+	fi
+
+	# Reapply current theme
+	local theme
+	theme=$(current_theme)
+	cmd_reload
+	ok "Updated to latest — theme: $theme"
+}
+
+cmd_restore() {
+	local backup_base="$HOME/.config/symphony/backups"
+	[[ -d "$backup_base" ]] || { err "No backups found"; exit 1; }
+
+	local backups=()
+	mapfile -t backups < <(ls -d "$backup_base"/*/ 2>/dev/null | sort -rV)
+	[[ ${#backups[@]} -eq 0 ]] && { err "No backups found"; exit 1; }
+
+	local selected
+	if command -v gum &>/dev/null; then
+		selected=$(printf '%s\n' "${backups[@]}" | xargs -n1 basename | gum choose --header "Select backup to restore:") || exit 0
+		selected="$backup_base/$selected"
+	else
+		echo "Available backups:"
+		for i in "${!backups[@]}"; do
+			echo "  $((i+1)). $(basename "${backups[$i]}")"
+		done
+		read -rp "Select [1-${#backups[@]}]: " choice
+		[[ -z "$choice" ]] && exit 0
+		selected="${backups[$((choice-1))]}"
+	fi
+
+	[[ -d "$selected" ]] || { err "Invalid selection"; exit 1; }
+
+	local current current_theme backup_name count=0
+	current_theme=$(current_theme)
+	backup_name=$(basename "$selected")
+
+	info "Current theme: $current_theme"
+	info "Restoring from backup: $backup_name"
+
+	while IFS= read -r file; do
+		local dest="$HOME/${file#$selected/}"
+		mkdir -p "$(dirname "$dest")"
+		cp "$file" "$dest"
+		((count++))
+	done < <(find "$selected" -type f)
+
+	ok "Restored $count files from $backup_name"
+
+	# Show what was restored (max 5 files)
+	local shown=0
+	while IFS= read -r file && [[ $shown -lt 5 ]]; do
+		local rel_path="${file#$selected/}"
+		echo "  ${GREEN}→${RESET} ~/$rel_path"
+		((shown++))
+	done < <(find "$selected" -type f | head -5)
+
+	local total
+	total=$(find "$selected" -type f | wc -l)
+	[[ $total -gt 5 ]] && echo "  ${CYAN}…${RESET} and $((total - 5)) more"
+}
+
+cmd_fresh_setup() {
+	echo
+	echo -e "${RED}  ⚠  DESTRUCTIVE OPERATION${RESET}"
+	echo -e "  This will:"
+	echo -e "    1. Backup current configs"
+	echo -e "    2. Remove ~/symphony"
+	echo -e "    3. Re-clone from GitHub"
+	echo -e "    4. Run full install"
+	echo
+
+	printf 'Type "fresh" to confirm: '
+	read -r confirm
+	[[ "$confirm" == "fresh" ]] || { info "Cancelled"; exit 0; }
+
+	# Backup
+	local timestamp
+	timestamp=$(date +%Y-%m-%d_%H-%M)
+	local backup="$HOME/.config/symphony/backups/$timestamp"
+	mkdir -p "$backup"
+	cp -r "$HOME/.config/symphony" "$backup/symphony" 2>/dev/null || true
+	ok "Backed up to $backup"
+
+	# Nuke and reclone
+	local repo
+	repo=$(git -C "$SYMPHONY_REPO" remote get-url origin 2>/dev/null || echo "https://github.com/vyrx-dev/symphony.git")
+	rm -rf "${SYMPHONY_REPO:?}"
+	git clone "$repo" "$SYMPHONY_REPO"
+	ok "Re-cloned from $repo"
+
+	# Re-install
+	cd "$SYMPHONY_REPO"
+	source ./install.sh
+}
+
+# ╭───────────────────────────────────────────────────────────────────────╮
+# │ Help                                                                  │
+# ╰───────────────────────────────────────────────────────────────────────╯
+
+cmd_help() {
+	cat <<'EOF'
+        ♪                                            ♫
+   ▄▄▄▄▄                                         ♪
+  ██▀▀▀▀█▄                      █▄           ♬
+  ▀██▄  ▄▀       ▄              ██          ▄
+    ▀██▄▄  ██ ██ ███▄███▄ ████▄ ████▄ ▄███▄ ████▄ ██ ██
+  ▄   ▀██▄ ██▄██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██▄██
+  ▀██████▀▄▄▀██▀▄██ ██ ▀█▄████▀▄██ ██▄▀███▀▄██ ▀█▄▄▀██▀
+     ♫       ██           ██                        ██
+           ▀▀▀     ♪      ▀              ♬        ▀▀▀
+
+Usage: symphony <command> [options]
+
+Commands:
+  switch [theme]     Switch theme (menu if no name given; use -r/--random for random)
+  browse             Browse & import Omarchy themes with preview
+  import <url>       Import Omarchy theme from GitHub
+  tui                Interactive theme browser & manager
+  list               Show all themes
+  current            Print current theme
+  reload             Re-apply current theme
+  update             Pull latest changes & redeploy configs
+  restore            Restore configs from a backup
+  fresh-setup        Nuclear option — backup, nuke, reclone, reinstall
+  fix                Fix broken symlinks
+  remove <theme>     Delete a theme
+  uninstall          Remove Symphony
+  help               This help
+  version            Version info
+
+Keybindings:
+  SUPER+SHIFT+I               Symphony TUI
+  SUPER+CTRL+SHIFT+SPACE      Theme switcher
+  SUPER+CTRL+SPACE            Matugen theme from wallpaper
+  SUPER+ALT+SPACE             Wallpaper picker
+  SUPER+ALT+LEFT/RIGHT        Cycle wallpapers
+  SUPER+BACKSPACE             Toggle terminal transparency
+  SUPER+CTRL+BACKSPACE        Toggle focus/vibe mode
+  SUPER+K                     Show all keybindings
+
+Tip:
+  Waybar brightness icon: left-click for Random wallpaper picker, right-click to apply random wallpaper
+
+Examples:
+  symphony switch
+  symphony switch tokyo-night
+  symphony switch --random
+  symphony import bjarneo/omarchy-sakura-theme
+  symphony import https://github.com/user/omarchy-theme
+
+FAQ:
+  Spotify not themed?
+    Spicetify (Spotify theming tool) needs a one-time setup:
+      1. Open Spotify and keep it running for 60 seconds
+      2. Run: spicetify backup apply
+    After this, themes auto-apply on every switch.
+
+EOF
+	echo "  Found a problem? https://github.com/vyrx-dev/symphony/issues/new"
+}
+
+cmd_version() {
+	cat <<'EOF'
+        ♪                                            ♫
+   ▄▄▄▄▄                                         ♪
+  ██▀▀▀▀█▄                      █▄           ♬
+  ▀██▄  ▄▀       ▄              ██          ▄
+    ▀██▄▄  ██ ██ ███▄███▄ ████▄ ████▄ ▄███▄ ████▄ ██ ██
+  ▄   ▀██▄ ██▄██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██▄██
+  ▀██████▀▄▄▀██▀▄██ ██ ▀█▄████▀▄██ ██▄▀███▀▄██ ▀█▄▄▀██▀
+     ♫       ██           ██                        ██
+           ▀▀▀     ♪      ▀              ♬        ▀▀▀
+EOF
+	echo ""
+	echo "  Symphony v$VERSION"
+	echo "  Author: vyrx"
+	echo "  https://github.com/vyrx-dev/symphony"
+}
+
+# ╭───────────────────────────────────────────────────────────────────────╮
+# │ Main                                                                  │
+# ╰───────────────────────────────────────────────────────────────────────╯
+
+case "${1:-help}" in
+	switch)          shift; cmd_switch "$@" ;;
+	browse)          exec "$SCRIPT_DIR/symphony-tui" --browse-inner ;;
+	import)          shift; cmd_import "$@" ;;
+	tui)             exec "$SCRIPT_DIR/symphony-tui" ;;
+	reload)          cmd_reload ;;
+	update)          cmd_update ;;
+	restore)         cmd_restore ;;
+	fresh-setup)     cmd_fresh_setup ;;
+	fix)             cmd_fix ;;
+	list|ls)         cmd_list ;;
+	current)         echo ""; echo -e "  ${GREEN}●${RESET} $(current_theme)"; "$HOME/.local/bin/fetch-colors" 2>/dev/null || true ;;
+	remove|rm)       shift; cmd_remove "$@" ;;
+	uninstall)       "$SCRIPT_DIR/uninstall.sh" ;;
+	help|-h|--help)  cmd_help ;;
+	version|-v)      cmd_version ;;
+	*)               err "Unknown: $1"; echo "Try: symphony help"; exit 1 ;;
+esac
