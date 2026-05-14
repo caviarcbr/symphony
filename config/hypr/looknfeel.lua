@@ -6,7 +6,8 @@
 -- ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚═════╝      ╚═╝     ╚══════╝╚══════╝╚══════╝
 
 -- Colors from Symphony
-dofile("/home/jz/.config/symphony/current/hypr/theme/colors.lua")
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/symphony/current/hypr/theme/?.lua"
+require("colors")
 
 -- https://wiki.hyprland.org/Configuring/Variables/#general
 hl.config({
