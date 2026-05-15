@@ -6,10 +6,10 @@
 --    ╚═╝   ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ 
 
 -- fullscreen
-hl.bind("SUPER + F", hl.dsp.fullscreen( { mode = "fullscreen", action = "toggle" } ))
+hl.bind("SUPER + F", hl.dsp.window.fullscreen( { mode = "fullscreen", action = "toggle" } ))
 
 hl.config({
-  dwindle {
+  dwindle = {
      -- pseudotile = true,
      preserve_split = true,
   }
@@ -27,7 +27,7 @@ for i = 1, 10 do
 end
 
 hl.bind("ALT + TAB", hl.dsp.layout("cyclenext"))
-hl.bind("ALT + TAB", hl.dsp.window.alterzorder( { mode = "top" } ) )
+hl.bind("ALT + TAB", hl.dsp.window.alter_zorder( { mode = "top" } ) )
 -- bindd = ALT, TAB, Cycle to next window, cyclenext
 -- bindd = ALT, TAB, Reveal active window on top, bringactivetotop
 hl.bind("SUPER + TAB", hl.dsp.focus( { workspace = "previous"} ) )

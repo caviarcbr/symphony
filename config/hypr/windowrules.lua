@@ -26,7 +26,7 @@ hl.window_rule({
   match = {
     class = ".*"
   },
-  supress_event = "maximize"
+  suppress_event = "maximize"
 })
 
 -- 97% opacity when focused, 90% when unfocused
@@ -210,7 +210,7 @@ hl.window_rule({
   pin = true,
   size = "600, 338",
   keep_aspect_ratio = true,
-  border_size = "0",
+  border_size = 0,
   opacity = "1 1",
 
 })

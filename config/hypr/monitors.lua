@@ -102,49 +102,49 @@ hl.monitor({
 --#####  --------------------------------  ######
 --#####      WORKSPACE → APP ASSIGNMENT    ######
 --#####  --------------------------------  ######
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "(dev.zed.Zed)"
   },
   workspace = "2",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "^(brave-perplexity.ai__-Default)$"
   },
   workspace = "3",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "^(brave-web.whatsapp.com__-Default)$"
   },
   workspace = "6",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "(org.telegram.desktop)"
   },
   workspace = "6",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "^(brave-app.todoist.com__-Default)$"
   },
   workspace = "7",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "(obsidian)"
   },
   workspace = "8",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "(spotify)"
   },
   workspace = "9",
 })
-hl.windowrule({
+hl.window_rule({
   match = {
     class = "(vesktop)"
   },
