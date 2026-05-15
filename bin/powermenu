@@ -2,7 +2,7 @@
 
 scrDir="$HOME/.local/bin"
 
-options="Shutdown\nReboot\nSuspend\nLogout"
+options="Shutdown\nReboot\nSuspend\nLogout\nLock"
 
 choice=$(echo -e "$options" | rofi -dmenu -p "" -config "$HOME/.config/rofi/custom-rofi/config-powermenu.rasi")
 
@@ -23,4 +23,7 @@ case "$choice" in
     hyprctl dispatch "hl.dsp.exit()"
 	fi
 	;;
+"Lock")
+  loginctl lock-session
+  ;;
 esac
