@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/jacob-zawadzki/symphony/refs/heads/
 Manual install:
 
 ```bash
-git clone -b symphony-3.0-lua https://github.com/jacob-zawadzki/symphony ~/symphony
+git clone https://github.com/jacob-zawadzki/symphony ~/symphony
 cd ~/symphony && ./install.sh
 ```
 
