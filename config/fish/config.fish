@@ -26,4 +26,4 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.spicetify
 
 # Symphony
-set -gx PATH /home/vyrx/symphony/install/themes $PATH
+set -gx PATH ~/symphony/install/themes $PATH

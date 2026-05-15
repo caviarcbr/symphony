@@ -57,12 +57,9 @@ catch_error() {
     echo -e "${MAGENTA}    Oops! Something didn't go as planned ${RESET}😢"
     echo -e "${DIM}    Don't worry - this happens sometimes.${RESET}"
     echo
-    echo -e "${MAGENTA}$QR_DISCORD${RESET}"
     echo
-    echo -e "${BOLD}    Scan to DM me on Discord, happy to help!${RESET}"
-    echo
-    echo -e "${DIM}    Or open an issue:${RESET}"
-    echo -e "    https://github.com/vyrx-dev/symphony/issues"
+    echo -e "${DIM}    Contact me or open an issue:${RESET}"
+    echo -e "    https://github.com/jacob-zawadzki/symphony/issues"
     echo
     exit 1
 }

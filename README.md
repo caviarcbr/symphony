@@ -11,11 +11,9 @@
 
 > **This is my setup.** It's opinionated — the tools I chose because I like them. You might too, or you might not. Either way, it works.
 >
-> Built for **NVIDIA GPUs**. AMD/Intel? A few lines to change — ask an AI, it'll sort you out.
+> Built for **NVIDIA GPUs**, but will work with AMD/Intel as well with minor adjustments.
 >
-> Tested on Arch and CachyOS (no desktop environment).
->
-> **Note:** I purposely avoided quickshell. It's convenient but eats RAM and slows things down. Everything here is TUI-based — snappy, lightweight, and still packed with features. Keep reading.
+> Tested on Arch (recommended to install on fresh install of Vanilla Arch).
 
 ## Showcase
 
@@ -23,7 +21,15 @@ https://github.com/user-attachments/assets/8f59ff8d-90ab-4a0c-a2d6-9346307f5de1
 
 ---
 
-## Manual install:
+## Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jacob-zawadzki/symphony/refs/heads/main/boot.sh | bash
+```
+
+`boot.sh` installs git and gum if needed, clones the repo, and runs the installer. Run it again anytime to update.
+
+Manual install:
 
 ```bash
 git clone -b symphony-3.0-lua https://github.com/jacob-zawadzki/symphony ~/symphony
@@ -65,15 +71,10 @@ Tweak them in `config/hypr/bindings.conf`.
 |-----|--------|
 | `Super + Return` | Terminal |
 | `Super + Space` | App Launcher |
-| `Super + B` | Browser |
-| `Super + E` | File Manager |
-| `Super + M` | Spotify |
-| `Super + D` | Discord |
-| `Super + C` | VS Code |
-| `Alt + M` | RMPC |
-| `Alt + N` | Neovim |
-| `Alt + Q` | Yazi |
-| `Alt + /` | Btop |
+| `Super + W` | Browser |
+| `Super + E` | Yazi |
+| `Super + M` | RMPC |
+| `Super + B` | Btop |
 
 </details>
 
@@ -84,7 +85,6 @@ Tweak them in `config/hypr/bindings.conf`.
 |-----|--------|
 | `Alt + ,` | Clipboard |
 | `Alt + .` | Emoji Picker |
-| `Super + Ctrl + B` | Power Profiles |
 | `Super + Ctrl + Space` | Matugen Theme |
 | `Super + Alt + Space` | Wallpaper Picker |
 | `Super + Ctrl + Shift + Space` | Theme Switcher |
@@ -98,14 +98,12 @@ Tweak them in `config/hypr/bindings.conf`.
 |-----|--------|
 | `Super + Q` | Close |
 | `Super + K` | Kill |
-| `Super + Arrow` | Focus |
-| `Super + Shift + Arrow` | Move |
-| `Super + Ctrl + Arrow` | Resize |
+| `Super + H,J,K,L` | Focus |
+| `Super + Shift + H,J,K,L` | Move |
 | `Super + 1-9` | Workspace |
 | `Super + Shift + 1-9` | Send to Workspace |
 | `Super + F` | Fullscreen |
-| `Super + V` | Float |
-| `Super + Shift + O` | Pop (Float & Pin) |
+| `Super + V` | Toggle Split |
 
 </details>
 
@@ -114,15 +112,12 @@ Tweak them in `config/hypr/bindings.conf`.
 
 | Key | Action |
 |-----|--------|
-| `Super + Shift + L` | Lock |
 | `Super + Escape` | Power Menu |
 | `Super + N` | Notifications |
 | `Super + P` | Screenshot |
 | `Super + R` | Record |
 | `Super + Shift + R` | Record + Mic |
 | `Super + Shift + P` | Color Picker |
-| `Super + Backspace` | Toggle Transparency |
-| `Super + Ctrl + Backspace` | Vibe / Focus Mode |
 | `Ctrl + Alt + Space` | Random Wallpaper |
 | `Super + Alt + ←/→` | Cycle Wallpapers |
 
@@ -132,7 +127,6 @@ Tweak them in `config/hypr/bindings.conf`.
 
 ## Troubleshooting
 
-Rolling release = things break. Before opening an issue, paste the error into an AI — usually device-specific.
 
 **Install failed halfway?** Re-run the failed script:
 
@@ -150,7 +144,7 @@ Rolling release = things break. Before opening an issue, paste the error into an
 
 **Want to start over?** `symphony fresh-setup` — backs up, nukes, reclones, reinstalls. Type "fresh" to confirm.
 
-Still stuck? [Open an issue](https://github.com/vyrx-dev/symphony/issues/new?template=bug_report.yml).
+Still stuck? [Open an issue](https://github.com/jacob-zawadzki/symphony/issues/new?template=bug_report.yml).
 
 ---
 
@@ -158,6 +152,7 @@ Still stuck? [Open an issue](https://github.com/vyrx-dev/symphony/issues/new?tem
 
 Learned (and borrowed) from:
 
+- [vyrx-dev/symphony](https://github.com/vyrx-dev/symphony)
 - [HyDE-Project/HyDE](https://github.com/HyDE-Project/HyDE)
 - [JaKooLit/Hyprland-Dots](https://github.com/JaKooLit/Hyprland-Dots)
 - [basecamp/omarchy](https://github.com/basecamp/omarchy)
@@ -166,15 +161,6 @@ Learned (and borrowed) from:
 
 ---
 
-<a href="https://www.star-history.com/#vyrx-dev/symphony&type=date&legend=top-left">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&theme=dark&legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
-  </picture>
-</a>
-<div align="center">
-
-**[report a bug](https://github.com/vyrx-dev/symphony/issues/new?template=bug_report.yml)** · **[request a feature](https://github.com/vyrx-dev/symphony/issues/new?template=feature_request.yml)**
+**[report a bug](https://github.com/jacob-zawadzki/symphony/issues/new?template=bug_report.yml)** · **[request a feature](https://github.com/jacob-zawadzki/symphony/issues/new?template=feature_request.yml)**
 
 </div>
