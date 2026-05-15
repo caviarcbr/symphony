@@ -162,10 +162,11 @@ cmd_reload() {
 
 	mkdir -p "$SYMPHONY_CONFIG"
 	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
+	set_wallpaper "$theme"
 
-  hyprctl eval 'hl.config({misc = { disable_autoreload = 1, }, })' &>/dev/null || true
+  	hyprctl eval 'hl.config({misc = { disable_autoreload = 1, }, })' &>/dev/null || true
 	run_hooks
-  hyprctl eval 'hl.config({misc = { disable_autoreload = 0, }, })' &>/dev/null || true
+  	hyprctl eval 'hl.config({misc = { disable_autoreload = 0, }, })' &>/dev/null || true
 
 	ok "Reloaded $theme"
 }
