@@ -57,8 +57,8 @@ hl.bind("SUPER + CTRL + LEFT", hl.dsp.focus({ workspace = "e-1" })) --previous w
 hl.bind("SUPER + CTRL + RIGHT", hl.dsp.focus({ workspace = "e+1" })) -- next workspace
 
 -- Resize active window
-hl.bind("SUPER + code:20", hl.dsp.layout("splitratio -0.1"), { repeating = true })
-hl.bind("SUPER + code:21", hl.dsp.layout("splitratio +0.1"), { repeating = true })
+hl.bind("SUPER + code:20", hl.dsp.layout("splitratio -0.1"), { repeating = true }) -- "-" key
+hl.bind("SUPER + code:21", hl.dsp.layout("splitratio +0.1"), { repeating = true }) -- "=" key
 
 -- Scroll through existing workspaces with SUPER + scroll
 hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" })) --previous workspace

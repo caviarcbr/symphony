@@ -82,6 +82,12 @@ hl.window_rule({
   },
   tag = "+floating-window",
 })
+hl.window_rule({
+  match = {
+    tag = "floating-window",
+  },
+  size = "800 600"
+})
 
 -- Symphony TUI
 hl.window_rule({

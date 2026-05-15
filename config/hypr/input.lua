@@ -29,7 +29,7 @@ hl.config({
 
 		touchpad = {
 			-- Use natural (inverse) scrolling
-			natural_scroll = false, --true
+			natural_scroll = true, --false
 
 			-- Use two-finger clicks for right-click instead of lower-right corner
 			-- clickfinger_behavior = true

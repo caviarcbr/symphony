@@ -16,11 +16,7 @@ RofiDir = "~/.local/bin"
 ScrDir = "~/.local/bin"
 
 -- Apps
-hl.bind(
-	"SUPER + Return",
-	hl.dsp.exec_cmd("uwsm-app -- " .. terminal .. " --dir='$(cwd-terminal)'"),
-	{ description = "Terminal" }
-)
+hl.bind("SUPER + Return", hl.dsp.exec_cmd("uwsm-app -- " .. terminal .. " --dir='$(cwd-terminal)'"), { description = "Terminal" })
 hl.bind("SUPER + SHIFT + RETURN", hl.dsp.workspace.toggle_special("scratchpad"))
 hl.bind("SUPER + E", hl.dsp.workspace.toggle_special("quickfiles"))
 hl.bind("SUPER + B", hl.dsp.workspace.toggle_special("sysmon"))
@@ -60,26 +56,14 @@ hl.bind("SUPER + CTRL + SPACE", hl.dsp.exec_cmd(RofiDir .. "/selectWall"), { des
 hl.bind("SUPER + ALT + SPACE", hl.dsp.exec_cmd(RofiDir .. "/wallPicker"), { description = "Wallpaper Picker" })
 hl.bind("CTRL + ALT + SPACE", hl.dsp.exec_cmd(ScrDir .. "/change-theme"), { description = "Select awww wall" })
 hl.bind("SUPER + CTRL + SHIFT + SPACE", hl.dsp.exec_cmd("~/symphony/install/themes/symphony switch"), { description = "Theme Switcher" })
-hl.bind(
-	"SUPER + CTRL + SHIFT + BACKSPACE",
-	hl.dsp.exec_cmd("symphony switch --random"),
-	{ description = "Random Theme" }
-)
+hl.bind("SUPER + CTRL + SHIFT + BACKSPACE", hl.dsp.exec_cmd("symphony switch --random"), { description = "Random Theme" })
 hl.bind("SUPER + I", hl.dsp.exec_cmd("kitty --title symphony-tui -e symphony-tui"), { description = "Symphony TUI" })
-hl.bind(
-	"SUPER + ALT + I",
-	hl.dsp.exec_cmd("kitty --title symphony-browse -e symphony browse"),
-	{ description = "Browse Themes" }
-)
+hl.bind("SUPER + ALT + I", hl.dsp.exec_cmd("kitty --title symphony-browse -e symphony browse"), { description = "Browse Themes" })
 
 -- Current theme wallpaper cycling
 hl.bind("SUPER + ALT + up", hl.dsp.exec_cmd(ScrDir .. "/cycle-wallpaper"), { description = "Theme Wallpapers" })
 hl.bind("SUPER + ALT + right", hl.dsp.exec_cmd(ScrDir .. "/cycle-wallpaper next"), { description = "Next Wallpaper" })
-hl.bind(
-	"SUPER + ALT + left",
-	hl.dsp.exec_cmd(ScrDir .. "/cycle-wallpaper prev"),
-	{ description = "Previous Wallpaper" }
-)
+hl.bind("SUPER + ALT + left", hl.dsp.exec_cmd(ScrDir .. "/cycle-wallpaper prev"), { description = "Previous Wallpaper" })
 
 -- Power
 hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd(ScrDir .. "/lock-screen"), { description = "Lock screen" })
@@ -88,33 +72,17 @@ hl.bind("SUPER + ESCAPE", hl.dsp.exec_raw(RofiDir .. "/powermenu"), { descriptio
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd(RofiDir .. "/powermenu"), { locked = true }, { description = "Power Menu" })
 
 -- Kill
-hl.bind("SUPER + SHIFT + K", hl.dsp.exec_cmd("hyprctl kill"), { description = "Kill Application" })
+hl.bind("SUPER + ALT + K", hl.dsp.exec_cmd("hyprctl kill"), { description = "Kill Application" })
 -- hl.bind("SUPER + K", hl.dsp.exec_cmd(RofiDir .. "/keyhints"), { description = "Show All Keybindings" })
 
 -- Screenshots
 hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(ScrDir .. "/screenshot"), { description = "Screenshot with editing" })
-hl.bind(
-	"SUPER + SHIFT + PRINT",
-	hl.dsp.exec_cmd(ScrDir .. "/screenshot smart clipboard"),
-	{ description = "Screenshot to clipboard" }
-)
+hl.bind("SUPER + SHIFT + PRINT", hl.dsp.exec_cmd(ScrDir .. "/screenshot smart clipboard"), { description = "Screenshot to clipboard" })
 
 -- Screen Recordings
-hl.bind(
-	"SUPER + CTRL + R",
-	hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-desktop-audio"),
-	{ description = "Record Screen" }
-)
-hl.bind(
-	"SUPER + SHIFT + R",
-	hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-microphone-audio"),
-	{ description = "Record + Mic" }
-)
-hl.bind(
-	"SUPER + ALT + R",
-	hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam"),
-	{ description = "Record + Mic + Webcam" }
-)
+hl.bind("SUPER + CTRL + R", hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-desktop-audio"), { description = "Record Screen" })
+hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-microphone-audio"), { description = "Record + Mic" })
+hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd(ScrDir .. "/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam"), { description = "Record + Mic + Webcam" })
 
 -- Conversion
 hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd(ScrDir .. "/video-to-gif"), { description = "Convert mp4 video to gif" })
