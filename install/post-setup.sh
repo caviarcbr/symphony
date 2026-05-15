@@ -42,8 +42,8 @@ setup_keyd() {
     pkg_installed keyd || return 0
 
     echo
-    info "keyd can remap Capslock → Escape (tap) / Control (hold)"
-    info "  This is useful for Vim — tap Caps for Esc, hold for Ctrl"
+    info "keyd can remap Capslock → Escape (tap) / Super (hold)"
+    info "  This is useful for Vim — tap Caps for Esc, hold for Super"
     confirm "Enable keyd capslock remap?" || return 0
 
     step "Configuring keyd"
@@ -64,7 +64,7 @@ esc = capslock
 KEYD_EOF
 
     sudo systemctl enable keyd --now 2>/dev/null || true
-    ok "keyd enabled — Capslock is now Esc/Ctrl"
+    ok "keyd enabled — Capslock is now Esc/Super"
 }
 
 # ╭───────────────────────────────────────────────────────────────────────╮
