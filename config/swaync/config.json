@@ -51,7 +51,7 @@
       "text": ""
     },
     "mpris": {
-      "blacklist": [],
+      "blacklist": ["org.mpris.MediaPlayer2.playerctld"],
       "autohide": false,
       "show-album-art": "always",
       "loop-carousel": false
