@@ -18,8 +18,6 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("uwsm-app -- hypridle")
   hl.exec_cmd("uwsm-app -- swayosd-server")
   hl.exec_cmd("uwsm-app -- ~/.local/bin/battery-notify")
-  hl.exec_cmd("uwsm-app -- kdeconnect-indicator")
-  hl.exec_cmd("/usr/lib/kdeconnectd")
 
   -- Delay waybar to ensure Hyprland IPC is ready
   hl.exec_cmd("sleep 1 && uwsm app -- waybar")

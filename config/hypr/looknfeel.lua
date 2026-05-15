@@ -12,8 +12,8 @@ require("colors")
 -- https://wiki.hyprland.org/Configuring/Variables/#general
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 12,
+		gaps_in = 3,
+		gaps_out = 6,
 		border_size = 2,
 		col = {
 			active_border = secondary,
@@ -27,12 +27,12 @@ hl.config({
 
 	-- https://wiki.hyprland.org/Configuring/Variables/#decoration
 	decoration = {
-		rounding = 10,
+		rounding = 3,
 
 		blur = {
 			enabled = true,
-			size = 7,
-			passes = 4,
+			size = 1,
+			passes = 3,
 			ignore_opacity = true,
 			noise = 0.0117,
 			contrast = 0.8916,
@@ -41,14 +41,14 @@ hl.config({
 			popups = true,
 		},
 	},
-	misc = {
-		disable_hyprland_logo = true,
-		-- force_default_wallpaper = 0,  # Disables anime mascot wallpapers
-		disable_splash_rendering = true,
-		focus_on_activate = true,
-		anr_missed_pings = 3,
-		on_focus_under_fullscreen = 1,
-	},
+    misc = {
+      disable_hyprland_logo = true,
+      -- force_default_wallpaper = 0,  # Disables anime mascot wallpapers
+      disable_splash_rendering = true,
+      focus_on_activate = true,
+      anr_missed_pings = 3,
+      on_focus_under_fullscreen = 1,
+    },
 })
 -- App launcher
 hl.layer_rule({
@@ -101,4 +101,3 @@ hl.env("GUM_CONFIRM_SELECTED_FOREGROUND", "0") -- Black
 hl.env("GUM_CONFIRM_SELECTED_BACKGROUND", "2") -- Green
 hl.env("GUM_CONFIRM_UNSELECTED_FOREGROUND", "0") -- Black
 hl.env("GUM_CONFIRM_UNSELECTED_BACKGROUND", "8") -- Dark Grey
-

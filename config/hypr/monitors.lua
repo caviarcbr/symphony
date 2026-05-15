@@ -102,51 +102,51 @@ hl.monitor({
 --#####  --------------------------------  ######
 --#####      WORKSPACE → APP ASSIGNMENT    ######
 --#####  --------------------------------  ######
-hl.window_rule({
-  match = {
-    class = "(dev.zed.Zed)"
-  },
-  workspace = "2",
-})
-hl.window_rule({
-  match = {
-    class = "^(brave-perplexity.ai__-Default)$"
-  },
-  workspace = "3",
-})
-hl.window_rule({
-  match = {
-    class = "^(brave-web.whatsapp.com__-Default)$"
-  },
-  workspace = "6",
-})
-hl.window_rule({
-  match = {
-    class = "(org.telegram.desktop)"
-  },
-  workspace = "6",
-})
-hl.window_rule({
-  match = {
-    class = "^(brave-app.todoist.com__-Default)$"
-  },
-  workspace = "7",
-})
-hl.window_rule({
-  match = {
-    class = "(obsidian)"
-  },
-  workspace = "8",
-})
-hl.window_rule({
-  match = {
-    class = "(spotify)"
-  },
-  workspace = "9",
-})
-hl.window_rule({
-  match = {
-    class = "(vesktop)"
-  },
-  workspace = "10",
-})
+-- hl.window_rule({
+--   match = {
+--     class = "(dev.zed.Zed)"
+--   },
+--   workspace = "2",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "^(brave-perplexity.ai__-Default)$"
+--   },
+--   workspace = "3",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "^(brave-web.whatsapp.com__-Default)$"
+--   },
+--   workspace = "6",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "(org.telegram.desktop)"
+--   },
+--   workspace = "6",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "^(brave-app.todoist.com__-Default)$"
+--   },
+--   workspace = "7",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "(obsidian)"
+--   },
+--   workspace = "8",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "(spotify)"
+--   },
+--   workspace = "9",
+-- })
+-- hl.window_rule({
+--   match = {
+--     class = "(vesktop)"
+--   },
+--   workspace = "10",
+-- })

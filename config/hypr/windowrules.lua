@@ -214,3 +214,59 @@ hl.window_rule({
   opacity = "1 1",
 
 })
+
+-- Special Workspaces
+hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "kitty --title scratchpad" })
+hl.window_rule({
+	match = {
+		title = "scratchpad",
+	},
+	float = true,
+	center = true,
+	size = "850 600",
+})
+hl.workspace_rule({ workspace = "special:sysmon", on_created_empty = "kitty --title sysmon -e btop" })
+hl.window_rule({
+	match = {
+		title = "sysmon",
+	},
+	float = true,
+	center = true,
+	size = "850 600",
+})
+hl.workspace_rule({ workspace = "special:quickfiles", on_created_empty = "kitty --title quickfiles -e yazi" })
+hl.window_rule({
+	match = {
+		title = "quickfiles",
+	},
+	float = true,
+	center = true,
+	size = "850 600",
+})
+hl.workspace_rule({ workspace = "special:quickmusic", on_created_empty = "kitty --title quickmusic -e rmpc" })
+hl.window_rule({
+	match = {
+		title = "quickmusic",
+	},
+	float = true,
+	center = true,
+	size = "850 600",
+})
+hl.workspace_rule({ workspace = "special:wifi", on_created_empty = "kitty --title wlctl -e wlctl" })
+hl.window_rule({
+	match = {
+		title = "wlctl",
+	},
+	float = true,
+	center = true,
+	size = "870 550",
+})
+hl.workspace_rule({ workspace = "special:bluetooth", on_created_empty = "kitty --title bluetooth -e bluetui" })
+hl.window_rule({
+	match = {
+		title = "bluetooth",
+	},
+	float = true,
+	center = true,
+	size = "870 550",
+})
