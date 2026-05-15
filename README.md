@@ -60,9 +60,8 @@ Theme picker GUI: `Super + Ctrl + Shift + Space`
 
 ## Keybindings
 
-Tweak them in `config/hypr/bindings.conf`.
+Tweak them in `config/hypr/bindings.lua`.
 
-> `Super + K` shows all keybindings.
 
 <details>
 <summary><b>Apps</b></summary>
