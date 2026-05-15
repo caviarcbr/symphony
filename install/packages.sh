@@ -22,7 +22,7 @@ packages=(
 	pipewire pipewire-alsa pipewire-pulse wireplumber
 	pamixer wiremix
 	mpd mpc rmpc cava playerctl mpd-mpris
-	networkmanager nmgui-bin wlctl
+	networkmanager nmgui-bin wlctl-bin
 	bluez bluez-utils blueman bluetui
 	polkit-gnome brightnessctl ddcutil power-profiles-daemon upower
 	libnotify xdg-utils xdg-user-dirs inotify-tools
