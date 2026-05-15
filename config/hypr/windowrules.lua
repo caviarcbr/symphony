@@ -96,7 +96,7 @@ hl.window_rule({
   },
   float = true,
   center = true,
-  size = "720, 580",
+  size = "720 580",
 })
 
 -- Symphony Browse (larger for preview)
@@ -106,7 +106,7 @@ hl.window_rule({
   },
   float = true,
   center = true,
-  size = "1200, 750",
+  size = "1200 750",
 })
 
 -- Easyeffects (music equalizer)
@@ -116,7 +116,7 @@ hl.window_rule({
   },
   float = true,
   center = true,
-  size = "950, 850",
+  size = "950 850",
 })
 
 -- Float Steam
@@ -128,7 +128,7 @@ hl.window_rule({
   float = true,
   center = true,
   opacity = "1 1",
-  size = "1100, 700",
+  size = "1100 700",
   idle_inhibit = "fullscreen"
 })
 hl.window_rule({
@@ -214,7 +214,7 @@ hl.window_rule({
   },
   float = true,
   pin = true,
-  size = "600, 338",
+  size = "600 338",
   keep_aspect_ratio = true,
   border_size = 0,
   opacity = "1 1",
