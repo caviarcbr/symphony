@@ -59,8 +59,8 @@ setup_keyd() {
 # Maps capslock to escape when pressed and control when held.
 capslock = overload(meta, esc)
 
-# Remaps the escape key to capslock
-esc = capslock
+# Remaps the right alt key to capslock
+rightalt = capslock
 KEYD_EOF
 
     sudo systemctl enable keyd --now 2>/dev/null || true
