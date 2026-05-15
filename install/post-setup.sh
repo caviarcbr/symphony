@@ -57,7 +57,7 @@ setup_keyd() {
 [main]
 
 # Maps capslock to escape when pressed and control when held.
-capslock = overload(control, esc)
+capslock = overload(meta, esc)
 
 # Remaps the escape key to capslock
 esc = capslock

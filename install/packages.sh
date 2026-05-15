@@ -9,7 +9,7 @@ SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 packages=(
 	base-devel git git-lfs
-	hyprland-git hypridle-git hyprlock-git hyprpicker-git hyprsunset
+	hyprland hypridle hyprlock hyprpicker hyprsunset
 	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 	qt5-wayland qt6-wayland uwsm
 	waybar-git rofi swaync swayosd awww brave-bin
@@ -94,6 +94,8 @@ do_install() {
 		info "Installing ${#official[@]} official packages..."
 		sudo pacman -S --needed --noconfirm "${official[@]}"
 	fi
+    
+    sudo pacamn -R --noconfirm rust
 
 	if [[ ${#aur[@]} -gt 0 ]]; then
 		echo
