@@ -23,18 +23,10 @@ https://github.com/user-attachments/assets/8f59ff8d-90ab-4a0c-a2d6-9346307f5de1
 
 ---
 
-## Install
+## Manual install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vyrx-dev/symphony/symphony-3.0/boot.sh | bash
-```
-
-`boot.sh` installs git and gum if needed, clones the repo, and runs the installer. Run it again anytime to update.
-
-Manual install:
-
-```bash
-git clone -b symphony-3.0 https://github.com/vyrx-dev/symphony ~/symphony
+git clone -b symphony-3.0-lua https://github.com/jacob-zawadzki/symphony ~/symphony
 cd ~/symphony && ./install.sh
 ```
 
