@@ -94,8 +94,8 @@ do_install() {
 		sudo pacman -S --needed --noconfirm "${official[@]}"
 	fi
     
-  if command -v rust; then
-    sudo pacamn -R --noconfirm rust
+  if pacman -Qi rust &> /dev/null; then
+    sudo pacman -R --noconfirm rust &>/dev/null 2>&1 || true
   fi
 
 	if [[ ${#aur[@]} -gt 0 ]]; then

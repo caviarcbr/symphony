@@ -50,7 +50,7 @@ fi
 
 # ── SDDM ───────────────────────────────────────────────────────────────────────
 if pkg_installed sddm; then
-  sudo systemctl enable sddm
+  sudo systemctl enable sddm --quiet && ok "SDDM" || warn "SDDM failed"
 fi
 
 # ── mpdscribble ───────────────────────────────────────────────────────────────
