@@ -95,13 +95,9 @@ do_install() {
 		sudo pacman -S --needed --noconfirm "${official[@]}"
 	fi
     
-<<<<<<< Updated upstream
-    sudo pacman -R --noconfirm rust
-=======
   if command -v rust; then
     sudo pacamn -R --noconfirm rust
   fi
->>>>>>> Stashed changes
 
 	if [[ ${#aur[@]} -gt 0 ]]; then
 		echo
