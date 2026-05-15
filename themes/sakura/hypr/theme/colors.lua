@@ -5,13 +5,14 @@
 hl.config({
 	general = {
 		col = {
-			active_border = { colors = { "rgba(e48b7aee)", "rgba(f0a19aee)" }, angle = 45 },
+			active_border = {
+        colors = { "rgba(e48b7aee)", "rgba(f0a19aee)" }, angle = 45 },
 			inactive_border = "rgba(0a122088)",
 		},
 	},
 })
 -- Border colors
-secondary = { "rgba(e48b7aee)", "rgba(f0a19aee)", angle = 45 }
+secondary = { colors = { "rgba(e48b7aee)", "rgba(f0a19aee)" },  angle = 45 }
 outline_variant = "rgba(444444ff)"
 
 -- Shadow configuration
