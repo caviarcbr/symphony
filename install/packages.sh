@@ -9,10 +9,10 @@ SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 packages=(
 	base-devel git git-lfs
-	hyprland hypridle hyprlock hyprpicker hyprsunset
+	hyprland-git hypridle-git hyprlock-git hyprpicker-git hyprsunset
 	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 	qt5-wayland qt6-wayland uwsm
-	waybar rofi swaync swayosd awww brave-bin
+	waybar-git rofi swaync swayosd awww brave-bin
 	kitty alacritty fish starship tmux
 	eza bat fd ripgrep fzf zoxide jq
 	yazi nautilus 

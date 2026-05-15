@@ -134,7 +134,7 @@ cmd_switch() {
 	}
 
 	info "Switching to $theme..."
-	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
+  hyprctl eval 'hl.config({misc = { disable_autoreload = 1, }, })' &>/dev/null || true
 
 	mkdir -p "$SYMPHONY_CONFIG"
 	echo "$theme" > "$THEME_FILE"
@@ -145,7 +145,7 @@ cmd_switch() {
 		run_hooks
 	fi
 
-	hyprctl keyword misc:disable_autoreload 0 &>/dev/null || true
+  hyprctl eval 'hl.config({misc = { disable_autoreload = 0, }, })' &>/dev/null || true
 	set_wallpaper "$theme"
 
 	# Dynamic theme handles its own notification via change-theme script
@@ -163,9 +163,9 @@ cmd_reload() {
 	mkdir -p "$SYMPHONY_CONFIG"
 	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
 
-	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
+  hyprctl eval 'hl.config({misc = { disable_autoreload = 1, }, })' &>/dev/null || true
 	run_hooks
-	hyprctl keyword misc:disable_autoreload 0 &>/dev/null || true
+  hyprctl eval 'hl.config({misc = { disable_autoreload = 0, }, })' &>/dev/null || true
 
 	ok "Reloaded $theme"
 }

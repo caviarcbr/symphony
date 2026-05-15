@@ -7,9 +7,9 @@ gaps=$(hyprctl workspacerules -j | jq -r ".[] | select(.workspaceString == \"$wo
 
 if [[ $gaps == "0" ]]; then
 	# Switch to Vibe Mode
-	hyprctl keyword "workspace $workspace_id, gapsout:10, gapsin:4, bordersize:2"
-	hyprctl keyword decoration:rounding 15
-	hyprctl keyword animations:enabled true
+	hyprctl eval "hl.workspace_rule({ workspace = \"$workspace_id\", gaps_out = 10, gaps_in = 4, border_size = 2 })"
+	hyprctl eval 'hl.config({ decoration = { rounding = 15 } })'
+	hyprctl eval 'hl.config({ animations = { enabled = true } })'
 
 	sed -i 's/background_opacity 1$/background_opacity 0.65/g' ~/.config/kitty/kitty.conf
 	pkill -SIGUSR1 -x kitty
@@ -19,9 +19,9 @@ if [[ $gaps == "0" ]]; then
 	notify-send "Vibe Mode"
 else
 	# Switch to Focus Mode
-	hyprctl keyword "workspace $workspace_id, gapsout:0, gapsin:0, bordersize:1"
-	hyprctl keyword decoration:rounding 0
-	hyprctl keyword animations:enabled false
+	hyprctl eval "hl.workspace_rule({ workspace = \"$workspace_id\", gaps_out = 0, gaps_in = 0, border_size = 1 })"
+	hyprctl eval 'hl.config({ decoration = { rounding = 0 } })'
+	hyprctl eval 'hl.config({ animations = { enabled = false } })'
 
 	sed -i 's/background_opacity 0\.65$/background_opacity 1/g' ~/.config/kitty/kitty.conf
 	pkill -SIGUSR1 -x kitty

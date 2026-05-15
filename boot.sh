@@ -29,7 +29,7 @@ cat << 'EOF'
 EOF
 echo -e "${RESET}"
 
-REPO="${SYMPHONY_REPO:-vyrx-dev/symphony}"
+REPO="${SYMPHONY_REPO:-jacob-zawadzki/symphony}"
 BRANCH="${SYMPHONY_BRANCH:-main}"
 DEST="${SYMPHONY_DEST:-$HOME/symphony}"
 
