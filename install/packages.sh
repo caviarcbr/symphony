@@ -21,10 +21,9 @@ packages=(
 	cliphist wl-clip-persist
 	pipewire pipewire-alsa pipewire-pulse wireplumber
 	pamixer wiremix
-	mpd mpc rmpc cava playerctl mpdscribble
-	spotify-launcher mpd-mpris spicetify-cli-git
-	networkmanager nmgui-bin kdeconnect
-	bluez bluez-utils blueman
+	mpd mpc rmpc cava playerctl mpd-mpris
+	networkmanager nmgui-bin wlctl
+	bluez bluez-utils blueman bluetui
 	polkit-gnome brightnessctl ddcutil power-profiles-daemon upower
 	libnotify xdg-utils xdg-user-dirs inotify-tools
 	gnome-keyring libsecret xorg-xhost libappindicator
