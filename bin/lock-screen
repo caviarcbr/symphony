@@ -9,7 +9,14 @@ MON=$(ls "$CACHE" 2>/dev/null | grep -v '_' | head -1)
 pkill -f "alacritty --class Screensaver"
 pidof hyprlock && exit 0
 
-# Turn off display shortly after hyprlock takes over
-( sleep 30 && hyprctl dispatch "hl.dsp.dpms({action = 'off'})" ) &
 
-exec hyprlock
+( while ! pidof hyprlock > /dev/null; do sleep 0.5; done
+  for i in $(seq 60); do
+    sleep 0.5
+    if ! pidof hyprlock > /dev/null; then
+      exit 0
+    fi
+  done
+  hyprctl dispatch "hl.dsp.dpms({action = 'off'})" ) &
+
+  exec hyprlock
