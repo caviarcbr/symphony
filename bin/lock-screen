@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # Sync hyprlock wallpaper from swww cache (fast inline version)
-CACHE="$HOME/.cache/swww"
+CACHE="$HOME/.cache/awww/0.12.0"
 MON=$(ls "$CACHE" 2>/dev/null | grep -v '_' | head -1)
 [[ -f "$CACHE/$MON" ]] && ln -sf "$(tr '\0' '\n' < "$CACHE/$MON" | sed -n '3p')" "$HOME/.cache/hyprlock-wallpaper"
 
 # Kill screensaver, launch hyprlock
 pkill -f "alacritty --class Screensaver"
-pidof hyprlock || exec hyprlock
+pidof hyprlock && exit 0
+
+# Turn off display shortly after hyprlock takes over
+( sleep 30 && hyprctl dispatch "hl.dsp.dpms({action = 'off'})" ) &
+
+exec hyprlock

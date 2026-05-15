@@ -1,23 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Exit early if we don't have the tte show
-if ! command -v tte &>/dev/null; then
-  exit 1
-fi
+focused="$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')"
 
-# Exit early if screensave is already running
-pgrep -f "alacritty --class Screensaver" && exit 0
+while read -r monitor; do
+    hyprctl dispatch "hl.dsp.focus({ monitor = \"$monitor\" })"
 
-focused=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
+    hyprctl dispatch \
+        "hl.dsp.exec_cmd([[alacritty --class Screensaver --config-file ~/.config/alacritty/screensaver.toml -e ~/.local/bin/screensaver]])"
 
-for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
-  hyprctl dispatch focusmonitor $m
+done < <(
+    hyprctl monitors -j | jq -r '.[].name'
+)
 
-  # FIXME: Find a way to make this generic where we it can work for kitty + ghostty
-  hyprctl dispatch exec -- \
-    alacritty --class Screensaver \
-    --config-file ~/.config/alacritty/screensaver.toml \
-    -e ~/.local/bin/screensaver
-done
-
-hyprctl dispatch focusmonitor $focused
+hyprctl dispatch "hl.dsp.focus({ monitor = \"$focused\" })"
