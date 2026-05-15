@@ -57,26 +57,26 @@
 --   scale = 2,
 -- })
 
--- Acer EK220Q @ 100Hz
+-- !!! CHANGE THIS TO YOUR MONITOR(S) !!!
 hl.monitor({
-  output = "HDMI-A-1",
-  mode = "1920x1080@100",
-  position = "auto",
-  scale = 1,
-})
-
--- Set laptop screen to the left with preferred resolution and scale 1
-hl.monitor({
-  output = "eDP-1",
+  output = "",
   mode = "preferred",
-  position = "0x0",
-  scale = 1,
+  position = "auto",
+  scale = "auto",
 })
 
+-- -- Set laptop screen to the left with preferred resolution and scale 1
+-- hl.monitor({
+--   output = "eDP-1",
+--   mode = "preferred",
+--   position = "0x0",
+--   scale = 1,
+-- })
 
--- Laptop screen toggle
-hl.bind("SUPER + ALT + H", hl.dsp.exec_cmd("hyprctl keyword monitor 'eDP-1,disable'"))
-hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprctl keyword monitor 'eDP-1,preferred,0x0,1'"))
+
+-- -- Laptop screen toggle
+-- hl.bind("SUPER + ALT + H", hl.dsp.exec_cmd("hyprctl keyword monitor 'eDP-1,disable'"))
+-- hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprctl keyword monitor 'eDP-1,preferred,0x0,1'"))
 
 --#####  --------------------------------  ######
 --#####   WORKSPACE → MONITOR ASSIGNMENT   ######
@@ -85,19 +85,19 @@ hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprctl keyword monitor 'eDP-1,prefe
 
 
 -- EXTERNAL MONITOR (HDMI-A-1)
-hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1"})
-hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1"})
-hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1"})
-hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1"})
-hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1"})
-hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1"})
-
--- LAPTOP SCREEN (eDP-1)
-hl.workspace_rule({ workspace = "2", monitor = "eDP-1"})
-hl.workspace_rule({ workspace = "5", monitor = "eDP-1"})
-hl.workspace_rule({ workspace = "6", monitor = "eDP-1"})
-hl.workspace_rule({ workspace = "7", monitor = "eDP-1"})
-
+-- hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1"})
+-- hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1"})
+-- hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1"})
+-- hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1"})
+-- hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1"})
+-- hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1"})
+--
+-- -- LAPTOP SCREEN (eDP-1)
+-- hl.workspace_rule({ workspace = "2", monitor = "eDP-1"})
+-- hl.workspace_rule({ workspace = "5", monitor = "eDP-1"})
+-- hl.workspace_rule({ workspace = "6", monitor = "eDP-1"})
+-- hl.workspace_rule({ workspace = "7", monitor = "eDP-1"})
+--
 
 --#####  --------------------------------  ######
 --#####      WORKSPACE → APP ASSIGNMENT    ######
