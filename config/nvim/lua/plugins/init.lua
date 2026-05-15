@@ -12,10 +12,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-  {
-    "luckasRanarison/tree-sitter-hyprlang",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
