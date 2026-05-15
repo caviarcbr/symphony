@@ -71,5 +71,6 @@ KEYD_EOF
 # │ Run                                                                   │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
+sed -i 5s/user/"$USER"/g ~/.config/btop/btop.conf
 setup_sddm
 setup_keyd
