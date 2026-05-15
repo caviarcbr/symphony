@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/8f59ff8d-90ab-4a0c-a2d6-9346307f5de1
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jacob-zawadzki/symphony/refs/heads/main/boot.sh | bash
+curl -fsSL https://raw.githubusercontent.com/caviarcbr/symphony/refs/heads/main/boot.sh | bash
 ```
 
 `boot.sh` installs git and gum if needed, clones the repo, and runs the installer. Run it again anytime to update.
@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/jacob-zawadzki/symphony/refs/heads/
 Manual install:
 
 ```bash
-git clone https://github.com/jacob-zawadzki/symphony ~/symphony
+git clone https://github.com/caviarcbr/symphony ~/symphony
 cd ~/symphony && ./install.sh
 ```
 
@@ -143,7 +143,7 @@ Tweak them in `config/hypr/bindings.lua`.
 
 **Want to start over?** `symphony fresh-setup` — backs up, nukes, reclones, reinstalls. Type "fresh" to confirm.
 
-Still stuck? [Open an issue](https://github.com/jacob-zawadzki/symphony/issues/new?template=bug_report.yml).
+Still stuck? [Open an issue](https://github.com/caviarcbr/symphony/issues/).
 
 ---
 
@@ -160,6 +160,5 @@ Learned (and borrowed) from:
 
 ---
 
-**[report a bug](https://github.com/jacob-zawadzki/symphony/issues/new?template=bug_report.yml)** · **[request a feature](https://github.com/jacob-zawadzki/symphony/issues/new?template=feature_request.yml)**
 
 </div>

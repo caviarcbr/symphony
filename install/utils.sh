@@ -59,7 +59,7 @@ catch_error() {
     echo
     echo
     echo -e "${DIM}    Contact me or open an issue:${RESET}"
-    echo -e "    https://github.com/jacob-zawadzki/symphony/issues"
+    echo -e "    https://github.com/caviarcbr/symphony/issues"
     echo
     exit 1
 }

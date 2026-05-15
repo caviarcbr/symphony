@@ -7,7 +7,7 @@
 # ║   ███████║   ██║   ██║ ╚═╝ ██║██║     ██║  ██║╚██████╔╝██║ ╚████║   ██║   ║
 # ║   ╚══════╝   ╚═╝   ╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
-# https://github.com/jacob-zawadzki/symphony
+# https://github.com/caviarcbr/symphony
 
 set -e
 
@@ -331,7 +331,7 @@ cmd_fresh_setup() {
 
 	# Nuke and reclone
 	local repo
-	repo=$(git -C "$SYMPHONY_REPO" remote get-url origin 2>/dev/null || echo "https://github.com/jacob-zawadzki/symphony.git")
+	repo=$(git -C "$SYMPHONY_REPO" remote get-url origin 2>/dev/null || echo "https://github.com/caviarcbr/symphony.git")
 	rm -rf "${SYMPHONY_REPO:?}"
 	git clone "$repo" "$SYMPHONY_REPO"
 	ok "Re-cloned from $repo"
@@ -404,7 +404,7 @@ FAQ:
     After this, themes auto-apply on every switch.
 
 EOF
-	echo "  Found a problem? https://github.com/jacob-zawadzki/symphony/issues/new"
+	echo "  Found a problem? https://github.com/caviarcbr/symphony/issues/new"
 }
 
 cmd_version() {
@@ -421,8 +421,8 @@ cmd_version() {
 EOF
 	echo ""
 	echo "  Symphony v$VERSION"
-	echo "  Author: jacob-zawadzki"
-	echo "  https://github.com/jacob-zawadzki/symphony"
+	echo "  Author: caviarcbr"
+	echo "  https://github.com/caviarcbr/symphony"
 }
 
 # ╭───────────────────────────────────────────────────────────────────────╮
