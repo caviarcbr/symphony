@@ -48,6 +48,11 @@ if pkg_installed mpd; then
 	systemctl --user enable --now mpd-mpris --quiet
 fi
 
+# ── SDDM ───────────────────────────────────────────────────────────────────────
+if pkg_installed sddm; then
+  sudo systemctl enable sddm
+fi
+
 # ── mpdscribble ───────────────────────────────────────────────────────────────
 # Last.fm scrobbler for MPD
 if pkg_installed mpdscribble; then
