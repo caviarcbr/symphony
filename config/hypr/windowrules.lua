@@ -51,11 +51,12 @@ hl.window_rule({
     tag = "floating-window",
   },
   float = true,
+  center = true,
 })
 
 hl.window_rule({
   match = {
-    class = "(blueman-manager|localsend|Wiremix|nmgui)",
+    class = "(blueman-manager|xdg-desktop-portal-gtk|localsend|Wiremix|nmgui)",
   },
   tag = "+floating-window",
 })
@@ -67,6 +68,8 @@ hl.window_rule({
     ]],
   },
   tag = "+floating-window",
+  float = true,
+  center = true,
 })
 
 hl.window_rule({
