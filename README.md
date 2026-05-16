@@ -114,7 +114,7 @@ Tweak them in `config/hypr/bindings.lua`.
 | `Super + Escape` | Power Menu |
 | `Super + N` | Notifications |
 | `Super + P` | Screenshot |
-| `Super + R` | Record |
+| `Super + CTRL + R` | Record |
 | `Super + Shift + R` | Record + Mic |
 | `Super + Shift + P` | Color Picker |
 | `Ctrl + Alt + Space` | Random Wallpaper |
