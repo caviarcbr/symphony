@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/jz/Wallpapers/wallpaper-10.png",
+    "alpha": "100",
+    "special": {
+        "background": "#101510",
+        "foreground": "#e0e4db",
+        "cursor": "#9dd49e"
+    },
+    "colors": {
+        "color0": "#101510",
+        "color1": "#ffb4ab",
+        "color2": "#9dd49e",
+        "color3": "#a1ced6",
+        "color4": "#b8ccb5",
+        "color5": "#1f4d54",
+        "color6": "#3a4b3a",
+        "color7": "#e0e4db",
+        "color8": "#1c211c",
+        "color9": "#ffb4ab",
+        "color10": "#9dd49e",
+        "color11": "#a1ced6",
+        "color12": "#b8ccb5",
+        "color13": "#1f4d54",
+        "color14": "#3a4b3a",
+        "color15": "#e0e4db"
+    }
+}

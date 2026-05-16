@@ -1,0 +1,116 @@
+image = "/home/jz/Wallpapers/wallpaper-10.png"
+
+
+background = "rgba(101510ff)"
+
+error = "rgba(ffb4abff)"
+
+error_container = "rgba(93000aff)"
+
+inverse_on_surface = "rgba(2d322cff)"
+
+inverse_primary = "rgba(36693dff)"
+
+inverse_surface = "rgba(e0e4dbff)"
+
+on_background = "rgba(e0e4dbff)"
+
+on_error = "rgba(690005ff)"
+
+on_error_container = "rgba(ffdad6ff)"
+
+on_primary = "rgba(013913ff)"
+
+on_primary_container = "rgba(b8f1b9ff)"
+
+on_primary_fixed = "rgba(002108ff)"
+
+on_primary_fixed_variant = "rgba(1e5128ff)"
+
+on_secondary = "rgba(243424ff)"
+
+on_secondary_container = "rgba(d4e8d0ff)"
+
+on_secondary_fixed = "rgba(0f1f11ff)"
+
+on_secondary_fixed_variant = "rgba(3a4b3aff)"
+
+on_surface = "rgba(e0e4dbff)"
+
+on_surface_variant = "rgba(c1c9beff)"
+
+on_tertiary = "rgba(00363dff)"
+
+on_tertiary_container = "rgba(bdeaf3ff)"
+
+on_tertiary_fixed = "rgba(001f24ff)"
+
+on_tertiary_fixed_variant = "rgba(1f4d54ff)"
+
+outline = "rgba(8c9389ff)"
+
+outline_variant = "rgba(424940ff)"
+
+primary = "rgba(9dd49eff)"
+
+primary_container = "rgba(1e5128ff)"
+
+primary_fixed = "rgba(b8f1b9ff)"
+
+primary_fixed_dim = "rgba(9dd49eff)"
+
+scrim = "rgba(000000ff)"
+
+secondary = "rgba(b8ccb5ff)"
+
+secondary_container = "rgba(3a4b3aff)"
+
+secondary_fixed = "rgba(d4e8d0ff)"
+
+secondary_fixed_dim = "rgba(b8ccb5ff)"
+
+shadow = "rgba(000000ff)"
+
+source_color = "rgba(333932ff)"
+
+surface = "rgba(101510ff)"
+
+surface_bright = "rgba(363a35ff)"
+
+surface_container = "rgba(1c211cff)"
+
+surface_container_high = "rgba(272b26ff)"
+
+surface_container_highest = "rgba(313630ff)"
+
+surface_container_low = "rgba(181d18ff)"
+
+surface_container_lowest = "rgba(0b0f0bff)"
+
+surface_dim = "rgba(101510ff)"
+
+surface_tint = "rgba(9dd49eff)"
+
+surface_variant = "rgba(424940ff)"
+
+tertiary = "rgba(a1ced6ff)"
+
+tertiary_container = "rgba(1f4d54ff)"
+
+tertiary_fixed = "rgba(bdeaf3ff)"
+
+tertiary_fixed_dim = "rgba(a1ced6ff)"
+
+
+-- Shadow configuration
+hl.config({
+  decoration = {
+      shadow = {
+          color = "rgba(00000080)",
+          color_inactive = "rgba(0000004d)",
+          offset = {2, 2},
+          range = 20,
+          render_power = 3,
+      },
+  },
+})

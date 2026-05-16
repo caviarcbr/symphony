@@ -1,0 +1,38 @@
+/* Symphony - Dynamic (matugen) */
+.theme-dark, .theme-light {
+  --background-primary: #101510;
+  --background-primary-alt: #1c211c;
+  --background-secondary: #272b26;
+  --background-secondary-alt: #1c211c;
+  --background-modifier-hover: #313630;
+  --background-modifier-border: #424940;
+
+  --text-normal: #e0e4db;
+  --text-muted: #c1c9be;
+  --text-faint: #8c9389;
+  --text-on-accent: #013913;
+
+  --interactive-accent: #9dd49e;
+  --interactive-accent-hover: #1e5128;
+  --text-accent: #9dd49e;
+  --text-accent-hover: #1e5128;
+
+  --link-color: #9dd49e;
+  --link-color-hover: #a1ced6;
+  --link-external-color: #b8ccb5;
+
+  --code-background: #1c211c;
+  --code-normal: #e0e4db;
+
+  --text-error: #ffb4ab;
+  --text-success: #a1ced6;
+  --text-warning: #b8ccb5;
+
+  --divider-color: #424940;
+  --icon-color: #c1c9be;
+  --icon-color-hover: #e0e4db;
+  --tag-color: #9dd49e;
+  --tag-background: #272b26;
+}
+
+::selection { background: #9dd49e40; }
