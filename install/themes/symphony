@@ -19,7 +19,7 @@ SYMPHONY_CONFIG="$HOME/.config/symphony"
 CURRENT_LINK="$SYMPHONY_CONFIG/current"
 THEME_FILE="$SYMPHONY_CONFIG/.current-theme"
 
-VERSION="3.0.0"
+VERSION="3.0.1"
 
 # colors
 RED='\033[0;31m'
@@ -397,9 +397,6 @@ Keybindings:
   SUPER+CTRL+SPACE            Matugen theme from wallpaper
   SUPER+ALT+SPACE             Wallpaper picker
   SUPER+ALT+LEFT/RIGHT        Cycle wallpapers
-  SUPER+BACKSPACE             Toggle terminal transparency
-  SUPER+CTRL+BACKSPACE        Toggle focus/vibe mode
-  SUPER+K                     Show all keybindings
 
 Tip:
   Waybar brightness icon: left-click for Random wallpaper picker, right-click to apply random wallpaper
@@ -410,13 +407,6 @@ Examples:
   symphony switch --random
   symphony import bjarneo/omarchy-sakura-theme
   symphony import https://github.com/user/omarchy-theme
-
-FAQ:
-  Spotify not themed?
-    Spicetify (Spotify theming tool) needs a one-time setup:
-      1. Open Spotify and keep it running for 60 seconds
-      2. Run: spicetify backup apply
-    After this, themes auto-apply on every switch.
 
 EOF
 	echo "  Found a problem? https://github.com/caviarcbr/symphony/issues/new"
