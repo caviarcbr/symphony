@@ -15,7 +15,7 @@ packages=(
 	waybar-git rofi swaync swayosd awww brave-bin
 	kitty alacritty fish starship tmux
 	eza bat fd ripgrep fzf zoxide jq
-	yazi nautilus 
+	yazi nautilus feh mpv 
 	neovim lazygit
 	grim slurp satty wl-clipboard gpu-screen-recorder ffmpeg v4l-utils
 	cliphist wl-clip-persist
@@ -39,7 +39,7 @@ applications=(
 	zen-browser-bin firefox chromium
 	obsidian bitwarden code visual-studio-code-bin
 	vesktop-bin discord keychain zed opencode
-	mpv yt-dlp steam lutris gamemode mangohud typora sddm-silent-theme nautilus-dropbox
+	yt-dlp steam lutris gamemode mangohud typora sddm-silent-theme nautilus-dropbox
 )
 
 install_paru() {

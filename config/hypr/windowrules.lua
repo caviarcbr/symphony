@@ -228,6 +228,7 @@ hl.window_rule({
   size = "1280 720",
   float = true,
   center = true,
+  opacity = "1 1"
 })
 hl.window_rule({
   match = {
@@ -236,6 +237,7 @@ hl.window_rule({
   size = "1280 720",
   float = true,
   center = true,
+  opacity = "1 1"
 })
 
 -- Special Workspaces
