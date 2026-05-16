@@ -7,6 +7,72 @@ set -e
 SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 [[ -z "$RESET" ]] && source "$SYMPHONY_DIR/install/utils.sh"
 
+sudo tee /etc/pacman.conf > /dev/null << 'PACMAN_EOF'
+# /etc/pacman.conf
+
+# GENERAL OPTIONS
+
+[options]
+# The following paths are commented out with their default values listed.
+# If you wish to use different paths, uncomment and update the paths.
+#RootDir     = /
+#DBPath      = /var/lib/pacman/
+#CacheDir    = /var/cache/pacman/pkg/
+#LogFile     = /var/log/pacman.log
+#GPGDir      = /etc/pacman.d/gnupg/
+#HookDir     = /etc/pacman.d/hooks/
+HoldPkg     = pacman glibc
+#XferCommand = /usr/bin/curl -L -C - -f -o %o %u
+#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+#CleanMethod = KeepInstalled
+Architecture = auto
+
+# Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
+#IgnorePkg   =
+#IgnoreGroup =
+
+#NoUpgrade   =
+#NoExtract   =
+
+# Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+CheckSpace
+#VerbosePkgLists
+ParallelDownloads = 5
+DownloadUser = alpm
+#DisableSandboxFilesystem
+#DisableSandboxSyscalls
+
+SigLevel    = Required DatabaseOptional
+LocalFileSigLevel = Optional
+#RemoteFileSigLevel = Required
+
+
+#[core-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[core]
+Include = /etc/pacman.d/mirrorlist
+
+#[extra-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[extra]
+Include = /etc/pacman.d/mirrorlist
+
+# If you want to run 32 bit applications on your x86_64 system,
+# enable the multilib repositories as required here.
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+PACMAN_EOF
+
 packages=(
 	base-devel git git-lfs
 	hyprland hypridle hyprlock hyprpicker hyprsunset
@@ -94,9 +160,9 @@ do_install() {
 		sudo pacman -S --needed --noconfirm "${official[@]}"
 	fi
     
-  if pacman -Qi rust &> /dev/null; then
-    sudo pacman -R --noconfirm rust &>/dev/null 2>&1 || true
-  fi
+	  if pacman -Qi rust &> /dev/null; then
+	    sudo pacman -R --noconfirm rust &>/dev/null 2>&1 || true
+	  fi
 
 	if [[ ${#aur[@]} -gt 0 ]]; then
 		echo
@@ -124,7 +190,7 @@ install_paru || exit 1
 do_install "${packages[@]}"
 ask_applications
 
-if command -v npm &>/dev/null; then
-	info "Installing live-server..."
-	sudo npm install -g live-server &>/dev/null && ok "live-server" || warn "live-server failed (non-fatal)"
-fi
+# if command -v npm &>/dev/null; then
+# 	info "Installing live-server..."
+# 	sudo npm install -g live-server &>/dev/null && ok "live-server" || warn "live-server failed (non-fatal)"
+# fi
