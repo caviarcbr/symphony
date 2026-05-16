@@ -131,8 +131,8 @@ done
 # Deploy config
 deploy_dir "$SYMPHONY_DIR/config" "$HOME/.config"
 deploy_files "$SYMPHONY_DIR/config" "$HOME/.config"  # standalone files like brave-flags.conf
-deploy_files "$SYMPHONY_DIR/install/shells/.p10k.zsh" "$HOME/"
-deploy_files "$SYMPHONY_DIR/install/shells/.zshenv" "$HOME/"
+cp "$SYMPHONY_DIR/install/shells/.p10k.zsh" "$HOME/"
+cp "$SYMPHONY_DIR/install/shells/.zshenv" "$HOME/"
 
 # Deploy local/share
 deploy_dir "$SYMPHONY_DIR/local/share" "$HOME/.local/share"
