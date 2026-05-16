@@ -314,7 +314,7 @@ page_two() {
     echo
     echo
 
-    center_text "https://github.com/caviar/symphony/issues" "$C_DIMMER"
+    center_text "https://github.com/caviarcbr/symphony/issues" "$C_DIMMER"
 
     echo
     echo
