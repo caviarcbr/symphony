@@ -110,7 +110,6 @@ get_random_theme() {
 }
 
 cmd_switch() {
-  set -x
 	local theme="$1"
     [[ "$theme" == "--random" ]] || [[ "$theme" == "-r" ]] && theme=$(get_random_theme)
 
@@ -435,6 +434,7 @@ case "${1:-help}" in
 	import)          shift; cmd_import "$@" ;;
 	tui)             exec "$SCRIPT_DIR/symphony-tui" ;;
 	reload)          cmd_reload ;;
+  reload-wall)     set_wallpaper ;;
 	update)          cmd_update ;;
 	restore)         cmd_restore ;;
 	fresh-setup)     cmd_fresh_setup ;;
