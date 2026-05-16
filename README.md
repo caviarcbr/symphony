@@ -96,7 +96,7 @@ Tweak them in `config/hypr/bindings.lua`.
 | Key | Action |
 |-----|--------|
 | `Super + Q` | Close |
-| `Super + K` | Kill |
+| `Super + ALT + K` | Kill |
 | `Super + H,J,K,L` | Focus |
 | `Super + Shift + H,J,K,L` | Move |
 | `Super + 1-9` | Workspace |
