@@ -155,6 +155,22 @@ cmd_switch() {
 	ok "Switched to $theme"
 }
 
+cmd_reload_first() {
+	local theme
+	theme=$(current_theme)
+	info "Reloading $theme..."
+
+	mkdir -p "$SYMPHONY_CONFIG"
+	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
+  set_wallpaper $theme
+
+  	hyprctl eval 'hl.config({misc = { disable_autoreload = 1, }, })' &>/dev/null || true
+	run_hooks
+  	hyprctl eval 'hl.config({misc = { disable_autoreload = 0, }, })' &>/dev/null || true
+
+	ok "Reloaded $theme"
+}
+
 cmd_reload() {
 	local theme
 	theme=$(current_theme)
@@ -434,7 +450,7 @@ case "${1:-help}" in
 	import)          shift; cmd_import "$@" ;;
 	tui)             exec "$SCRIPT_DIR/symphony-tui" ;;
 	reload)          cmd_reload ;;
-  reload-wall)     set_wallpaper ;;
+  reload-first)          cmd_reload_first ;;
 	update)          cmd_update ;;
 	restore)         cmd_restore ;;
 	fresh-setup)     cmd_fresh_setup ;;

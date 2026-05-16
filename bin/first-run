@@ -24,7 +24,7 @@ fi
 if [[ ! -f "$STATE_DIR/first-run-done" ]]; then
     sleep 3
 
-    ~/symphony/install/themes/symphony reload
+    ~/symphony/install/themes/symphony reload-first
     notify-send -u critical "Welcome to Symphony" "Run 'symphony help' to get started."
     notify-send -u critical "App Launcher" "Press Super + Space to launch apps"
     notify-send -u critical "Choose Theme" "Press Super + Ctrl + Shift + Space to choose and apply a theme"
