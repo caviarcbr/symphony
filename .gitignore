@@ -18,6 +18,7 @@ themes/dynamic/spicetify/Themes/symphony/color.ini
 
 # Theme wallpaper symlinks (user preference, changes frequently)
 themes/*/wallpaper
+themes/*\(omarchy\)
 
 config/tmux/plugins
 
