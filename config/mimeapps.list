@@ -1,0 +1,7 @@
+
+[Default Applications]
+image/webp=feh.desktop
+image/png=feh.desktop
+image/jpeg=feh.desktop
+image/jpg=feh.desktop
+video/*=mpv.desktop

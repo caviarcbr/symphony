@@ -218,7 +218,24 @@ hl.window_rule({
   keep_aspect_ratio = true,
   border_size = 0,
   opacity = "1 1",
+})
 
+-- Picture and Video
+hl.window_rule({
+  match = {
+    class = "feh",
+  },
+  size = "1280 720",
+  float = true,
+  center = true,
+})
+hl.window_rule({
+  match = {
+    class = "mpv",
+  },
+  size = "1280 720",
+  float = true,
+  center = true,
 })
 
 -- Special Workspaces
