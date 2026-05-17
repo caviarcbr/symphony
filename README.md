@@ -44,7 +44,7 @@ Existing configs are backed up to `~/.config/symphony/backups/` before overwriti
 
 ```bash
 symphony switch          # pick a theme
-symphony switch sakura   # switch directly
+symphony switch [theme]  # switch directly
 symphony switch -r       # random theme
 symphony list            # show available themes
 symphony reload          # reapply current theme
