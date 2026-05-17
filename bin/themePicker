@@ -2,7 +2,7 @@
 # theme picker with image previews
 source "$(dirname "$0")/thumbcache"
 
-themes_dir="$HOME/.config/symphony/themes"
+themes_dir="$HOME/symphony/themes"
 symphony="$HOME/symphony/install/themes/symphony"
 current_theme=$(cat ~/.config/symphony/.current-theme 2>/dev/null || echo "sakura")
 

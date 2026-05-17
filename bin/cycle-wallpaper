@@ -8,7 +8,7 @@
 source "$HOME/.local/bin/thumbcache"
 
 THEME=$(cat "$HOME/.config/symphony/.current-theme" 2>/dev/null || echo "dynamic")
-WALLDIR="$HOME/symphony/themes/$THEME/backgrounds"
+WALLDIR="$HOME/.config/symphony/themes/$THEME/backgrounds"
 AWWW_PARAMS="--transition-fps 120 --transition-duration 1 --transition-bezier 0.25,0.1,0.25,1.0"
 
 if [[ "$THEME" == "dynamic" || ! -d "$WALLDIR" ]]; then

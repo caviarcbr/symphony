@@ -13,7 +13,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SYMPHONY_REPO="${SYMPHONY_REPO:-$HOME/symphony}"
-THEMES_DIR="$SYMPHONY_REPO/themes"
+THEMES_DIR="$HOME/.config/symphony/themes"
 HOOKS_DIR="$SCRIPT_DIR/hooks"
 SYMPHONY_CONFIG="$HOME/.config/symphony"
 CURRENT_LINK="$SYMPHONY_CONFIG/current"

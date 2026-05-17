@@ -8,7 +8,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SYMPHONY_DIR="$(dirname "$(dirname "$(dirname "$SCRIPT_DIR")")")"
-THEMES_DIR="$SYMPHONY_DIR/themes"
+THEMES_DIR="$HOME/.config/symphony/themes"
 
 source "$SCRIPT_DIR/init.sh"
 source "$SCRIPT_DIR/terminals.sh"
@@ -73,7 +73,6 @@ run_import() {
     
     local name
     name=$(basename "$url" | sed 's/^omarchy-//; s/^omakub-//; s/-theme$//; s/-omarchy$//' | tr '[:upper:]' '[:lower:]')
-    name="$name (omarchy)"
     local dest="$THEMES_DIR/$name"
     
     if [[ -d "$dest" ]]; then
