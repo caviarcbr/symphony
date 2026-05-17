@@ -238,36 +238,36 @@ cmd_import() {
 	"$SCRIPT_DIR/symphony-import/import.sh" "$@"
 }
 
-cmd_update() {
-	info "Updating Symphony..."
-
-	# Backup current configs
-	local timestamp
-	timestamp=$(date +%Y-%m-%d_%H-%M)
-	local backup="$HOME/.config/symphony/backups/$timestamp"
-	mkdir -p "$backup"
-	cp -r "$HOME/.config/symphony" "$backup/symphony" 2>/dev/null || true
-	ok "Backed up to $backup"
-
-	# Pull latest
-	if ! git -C "$SYMPHONY_REPO" pull --ff-only; then
-		err "Git pull failed — resolve conflicts manually"
-		exit 1
-	fi
-	ok "Pulled latest changes"
-
-	# Redeploy configs
-	if [[ -f "$SYMPHONY_REPO/install/deploy.sh" ]]; then
-		source "$SYMPHONY_REPO/install/deploy.sh"
-		ok "Configs redeployed"
-	fi
-
-	# Reapply current theme
-	local theme
-	theme=$(current_theme)
-	cmd_reload
-	ok "Updated to latest — theme: $theme"
-}
+# cmd_update() {
+# 	info "Updating Symphony..."
+#
+# 	# Backup current configs
+# 	local timestamp
+# 	timestamp=$(date +%Y-%m-%d_%H-%M)
+# 	local backup="$HOME/.config/symphony/backups/$timestamp"
+# 	mkdir -p "$backup"
+# 	cp -r "$HOME/.config/symphony" "$backup/symphony" 2>/dev/null || true
+# 	ok "Backed up to $backup"
+#
+# 	# Pull latest
+# 	if ! git -C "$SYMPHONY_REPO" pull --ff-only; then
+# 		err "Git pull failed — resolve conflicts manually"
+# 		exit 1
+# 	fi
+# 	ok "Pulled latest changes"
+#
+# 	# Redeploy configs
+# 	if [[ -f "$SYMPHONY_REPO/install/deploy.sh" ]]; then
+# 		source "$SYMPHONY_REPO/install/deploy.sh"
+# 		ok "Configs redeployed"
+# 	fi
+#
+# 	# Reapply current theme
+# 	local theme
+# 	theme=$(current_theme)
+# 	cmd_reload
+# 	ok "Updated to latest — theme: $theme"
+# }
 
 cmd_restore() {
 	local backup_base="$HOME/.config/symphony/backups"
@@ -382,7 +382,6 @@ Commands:
   list               Show all themes
   current            Print current theme
   reload             Re-apply current theme
-  update             Pull latest changes & redeploy configs
   restore            Restore configs from a backup
   fresh-setup        Nuclear option — backup, nuke, reclone, reinstall
   fix                Fix broken symlinks
