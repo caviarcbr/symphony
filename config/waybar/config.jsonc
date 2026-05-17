@@ -102,7 +102,7 @@
   "memory": {
     "format": " {used:0.1f}gb",
     "interval": 2,
-    "on-click": "kitty -e btop"
+    "on-click": "kitty --title sysmon -e btop"
   },
   "clock": {
     "format": "{:%H:%M}",
@@ -126,7 +126,7 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
-    "on-click": "nmgui"
+    "on-click": "~/.local/bin/wlctl-run"
   },
   "battery": {
     "format": "{icon}",
@@ -174,7 +174,7 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueman-manager"
+    "on-click": "~/.local/bin/bluetui-run"
   },
   "pulseaudio": {
     "format": "{icon}",
