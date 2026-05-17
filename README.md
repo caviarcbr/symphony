@@ -54,7 +54,6 @@ symphony switch [theme]  # switch directly
 symphony switch -r       # random theme
 symphony list            # show available themes
 symphony reload          # reapply current theme
-symphony update          # pull latest + redeploy
 symphony restore         # roll back from backup
 symphony fresh-setup     # reclone + reinstall
 symphony help            # show all commands
