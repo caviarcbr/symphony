@@ -128,7 +128,10 @@ if command -v git &>/dev/null; then
 		fi
 	fi
 fi
-
+# ── Udiskie ───────────────────────────────────────────────────────────────────
+if command -v udiskie; then
+  sed -i '29i \  hl.exec_cmd("udiskie --tray")' ~/.config/hypr/autostart.lua
+fi
 # ── Spotify ───────────────────────────────────────────────────────────────────
 # Configures spicetify for Symphony theming
 if pkg_installed spicetify-cli; then
