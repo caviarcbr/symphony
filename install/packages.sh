@@ -102,7 +102,7 @@ packages=(
 )
 
 applications=(
-	zen-browser-bin firefox chromium
+	udiskie localsend zen-browser-bin firefox chromium
 	obsidian bitwarden code visual-studio-code-bin
 	vesktop-bin discord keychain zed opencode
 	yt-dlp steam lutris gamemode mangohud typora sddm-silent-theme nautilus-dropbox
@@ -174,7 +174,7 @@ do_install() {
 ask_applications() {
 	command -v gum &>/dev/null || return 0
 	echo
-	gum confirm "Install optional applications?" || return 0
+  gum confirm "Install optional applications? Recommended to install at least a web browser" || return 0
 
 	local selected
 	selected=$(printf '%s\n' "${applications[@]}" | gum choose --no-limit --height 20) || return 0
