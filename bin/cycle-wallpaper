@@ -36,7 +36,7 @@ apply_wallpaper() {
   local idx=$1 trans=$2 pos=$3
   local wall="${WALLS[$idx]}"
   awww img "$wall" --transition-type "$trans" --transition-pos "$pos" $AWWW_PARAMS
-  ln -sf "$wall" "$HOME/symphony/themes/$THEME/wallpaper"
+  ln -sf "$wall" "$HOME/.config/symphony/themes/$THEME/wallpaper"
   notify-send -i "$wall" "Wallpaper" "$((idx + 1))/$TOTAL"
 }
 
