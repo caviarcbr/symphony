@@ -17,9 +17,9 @@
 
 > **This is my setup.** It's opinionated — the tools I chose because I like them. You might too, or you might not. Either way, it works.
 >
-> Built for **NVIDIA GPUs**, but will work with AMD/Intel as well with minor adjustments.
+> Includes prompt to set up for Nvidia GPUs.
 >
-> Tested on Arch (recommended to install on fresh install of Vanilla Arch).
+> Tested on Arch (Fresh install, not fully tested on systems that already have DE/WM).
 
 ## Showcase
 
@@ -28,6 +28,9 @@ https://github.com/user-attachments/assets/40ec921f-ae59-4fe3-8054-e70354c4f878
 ---
 
 ## Install
+
+> [!CAUTION]
+> These install scripts are meant for a minimal, fresh install of Arch Linux
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/caviarcbr/symphony/refs/heads/main/boot.sh | bash
