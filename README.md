@@ -161,7 +161,7 @@ Tweak them in `config/hypr/bindings.lua`.
 ./install/services.sh
 ```
 
-**Want to change waybar to have 12-hour clock?** Navigate to `~/.config/waybar` and change `$H:$M`to `$I:$M`
+**Want to change waybar to have 12-hour clock?** Navigate to `~/.config/waybar/config.jsonc` and change `$H:$M`to `$I:$M`
 
 **Want to change hyprlock to have 12-hour clock?** Navigate to `~/.config/hypr/hyprlock.conf` and change `$TIME`to `$TIME12`
 
