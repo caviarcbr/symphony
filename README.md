@@ -146,7 +146,7 @@ Tweak them in `config/hypr/bindings.lua`.
 | Music         | [MPD](https://musicpd.org/) + [RMPC](https://github.com/mierak/rmpc)        |
 | Visualizer    | [Cava](https://github.com/karlstav/cava)                                    |
 | Editor        | [Neovim + NvChad](https://neovim.io/)                                                |
-| Shell         | [Fish (zsh supported)](https://fishshell.com/) + [Starship](https://starship.rs/)           |
+| Shell         | [Fish](https://fishshell.com/) or [zsh](https://zsh.org) + [Starship](https://starship.rs/)           |
 
 ---
 
