@@ -8,6 +8,50 @@ SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 source "$SYMPHONY_DIR/install/utils.sh"
 
 # ╭───────────────────────────────────────────────────────────────────────╮
+# │ Nvidia Setup                                                          │
+# ╰───────────────────────────────────────────────────────────────────────╯
+
+setup_nvidia() {
+	command -v gum &>/dev/null || return 0
+	echo
+  gum confirm "Do you have an Nvidia GPU?" || return 0
+  step "Setting up for Nvidia GPU"
+  do_install nvidia-utils nvidia-open-dkms
+
+  sudo tee ~/.config/hypr/hyprland.lua > /dev/null << 'HYPR_EOF'
+
+-- ██╗  ██╗██╗   ██╗██████╗ ██████╗ ██╗      █████╗ ███╗   ██╗██████╗ 
+-- ██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔══██╗
+-- ███████║ ╚████╔╝ ██████╔╝██████╔╝██║     ███████║██╔██╗ ██║██║  ██║
+-- ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗██║     ██╔══██║██║╚██╗██║██║  ██║
+-- ██║  ██║   ██║   ██║     ██║  ██║███████╗██║  ██║██║ ╚████║██████╔╝
+-- ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
+
+-- Learn how to configure Hyprland: https://wiki.hyprland.org/Configuring/
+
+hl.on("hyprland.start", function ()
+  hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
+end)
+require("monitors")
+require("input")
+require("bindings")
+require("envs")
+require("looknfeel")
+require("autostart")
+require("animations")
+require("windowrules")
+require("tiling")
+require("media")
+
+-- NVIDIA environment variables
+hl.env("NVD_BACKEND","direct")
+hl.env("LIBVA_DRIVER_NAME","nvidia")
+hl.env("__GLX_VENDOR_LIBRARY_NAME","nvidia")
+
+HYPR_EOF
+}
+
+# ╭───────────────────────────────────────────────────────────────────────╮
 # │ SDDM Silent Theme                                                    │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
@@ -72,5 +116,6 @@ KEYD_EOF
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 sed -i 5s/user/"$USER"/g ~/.config/btop/btop.conf
+setup_nvidia
 setup_sddm
 setup_keyd

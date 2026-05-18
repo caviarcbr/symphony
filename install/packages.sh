@@ -184,6 +184,7 @@ ask_applications() {
 	do_install $selected
 }
 
+
 step "Installing packages"
 
 install_paru || exit 1
