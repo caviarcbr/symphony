@@ -152,9 +152,9 @@ done
 
 # Link default theme if none active
 if [[ ! -L "$SYMPHONY_CONFIG/current" ]]; then
-    if [[ -d "$SYMPHONY_CONFIG/themes/sakura" ]]; then
-        ln -sfn "$SYMPHONY_CONFIG/themes/sakura" "$SYMPHONY_CONFIG/current"
-        echo "sakura" > "$SYMPHONY_CONFIG/.current-theme"
+    if [[ -d "$SYMPHONY_CONFIG/themes/default" ]]; then
+        ln -sfn "$SYMPHONY_CONFIG/themes/default" "$SYMPHONY_CONFIG/current"
+        echo "default" > "$SYMPHONY_CONFIG/.current-theme"
     elif [[ -d "$SYMPHONY_CONFIG/themes/nordic" ]]; then
         ln -sfn "$SYMPHONY_CONFIG/themes/nordic" "$SYMPHONY_CONFIG/current"
         echo "nordic" > "$SYMPHONY_CONFIG/.current-theme"

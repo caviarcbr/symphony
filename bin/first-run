@@ -15,7 +15,7 @@ if [[ ! -f "$STATE_DIR/themes-installed" ]]; then
 
     # Apply default theme using full path
     if [[ -x "$SYMPHONY_REPO/install/themes/symphony" ]]; then
-        "$SYMPHONY_REPO/install/themes/symphony" switch sakura
+        "$SYMPHONY_REPO/install/themes/symphony" switch default
     fi
 
 fi
