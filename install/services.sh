@@ -44,6 +44,7 @@ if pkg_installed mpd; then
 	mkdir -p ~/.config/systemd/user/mpd.service.d
 	echo -e "[Service]\nRuntimeDirectory=mpd" >~/.config/systemd/user/mpd.service.d/override.conf
   sed -i 8s/uid/"$(id -u)"/g ~/.config/mpd/mpd.conf
+  sed -i 12s/uid/"$(id -u)"/g ~/.config/hypr/envs.lua
 	systemctl --user daemon-reload
 	systemctl --user enable --now mpd --quiet && ok "mpd" || warn "mpd failed"
 	systemctl --user enable --now mpd-mpris --quiet
