@@ -67,11 +67,7 @@ choose_shell() {
   selected=$(printf '%s\n' "${shells[@]}" | gum choose --header "Select a shell:") || return 0
   [[ -z "$selected" ]] && return 0
 
-  if [[ "$selected" == "fish" ]]; then
-  sudo chsh -s "$(command -v fish)" "$USER" && ok "shell set to fish" || warn "failed to set shell"
-  elif [[ "$selected" == "zsh" ]]; then
-  sudo chsh -s "$(command -v zsh)" "$USER" && ok "shell set to zsh" || warn "failed to set shell"
-  fi
+  sudo chsh -s "$(command -v "$selected")" "$USER" && ok "shell set to $selected" || warn "failed to set shell"
 }
 
 
