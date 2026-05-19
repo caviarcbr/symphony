@@ -26,6 +26,7 @@ hl.on("hyprland.start", function ()
 ------ --------------------- ------
 ------    AUTOSTART APPS     ------
 ------ --------------------- ------
+  hl.exec_cmd("udiskie --tray")
   
   -- hl.exec_cmd("spotify-launcher")
   -- hl.exec_cmd("vesktop")
