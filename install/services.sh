@@ -130,7 +130,7 @@ if command -v git &>/dev/null; then
 	fi
 fi
 # ── Udiskie ───────────────────────────────────────────────────────────────────
-if command -v udiskie; then
+if command -v udiskie >/dev/null 2&>1; then
   sed -i '29i \  hl.exec_cmd("udiskie --tray")' ~/.config/hypr/autostart.lua
 fi
 # ── Spotify ───────────────────────────────────────────────────────────────────
