@@ -32,13 +32,21 @@ if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && -z "$SYMPHONY_INSTALLING" && "$SYMPHO
 fi
 
 # Colors - Symphony gradient
-C_GOLD="\033[38;2;255;235;59m"
-C_CORAL="\033[38;2;255;138;128m"
-C_PINK="\033[38;2;244;143;177m"
+# C_GOLD="\033[38;2;255;235;59m"
+C_GOLD="\033[0;38;5;99;49m"
+# C_CORAL="\033[38;2;255;138;128m"
+C_CORAL="\033[0;38;5;39;49m"
+# C_PINK="\033[38;2;244;143;177m"
+C_PINK="\033[0;38;5;62;49m"
+# C_WHITE="\033[38;5;255m"
 C_WHITE="\033[38;5;255m"
+# C_DIM="\033[38;5;250m"
 C_DIM="\033[38;5;250m"
+# C_DIMMER="\033[38;5;245m"
 C_DIMMER="\033[38;5;245m"
+# C_RED="\033[38;2;255;82;82m"
 C_RED="\033[38;2;255;82;82m"
+# C_RESET="\033[0m"
 C_RESET="\033[0m"
 
 C_ACCENT="$C_PINK"
@@ -148,9 +156,9 @@ page_one() {
             --frame-rate 120 beams \
             --beam-row-symbols ▂ ▁ _ \
             --beam-column-symbols ▌ ▍ ▎ ▏ \
-            --beam-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 EC407A \
+            --beam-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --beam-gradient-steps 2 6 \
-            --final-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 EC407A \
+            --final-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --final-gradient-steps 12 \
             --final-gradient-direction horizontal 2>/dev/null || print_logo
     else
@@ -251,7 +259,7 @@ page_one() {
             --canvas-width "$TERM_WIDTH" \
             --anchor-text c \
             --frame-rate 60 highlight \
-            --final-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 EC407A \
+            --final-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --final-gradient-steps 8 \
             --final-gradient-direction horizontal 2>/dev/null || center_text "$curtains" "$C_ACCENT"
     else
@@ -281,7 +289,7 @@ page_two() {
             --spotlight-count 3 \
             --search-duration 250 \
             --beam-width-ratio 2.5 \
-            --final-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 EC407A \
+            --final-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --final-gradient-steps 12 \
             --final-gradient-direction horizontal 2>/dev/null || print_musical
     else
@@ -327,11 +335,11 @@ page_two() {
             --anchor-text c \
             --frame-rate 60 waves \
             --wave-symbols "♩" "♪" "♫" "♬" "♫" \
-            --wave-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 \
+            --wave-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --wave-gradient-steps 6 \
             --wave-length 6 \
             --wave-count 1 \
-            --final-gradient-stops FFB74D FF8A80 F48FB1 EC407A \
+            --final-gradient-stops 292F56 45407B 6850A0 935DC2 C368E0 \
             --final-gradient-direction horizontal 2>/dev/null || center_text "$footer" "$C_ACCENT"
     else
         center_text "$footer" "$C_ACCENT"
