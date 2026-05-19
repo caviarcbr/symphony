@@ -52,7 +52,7 @@ HYPR_EOF
 }
 
 # ╭───────────────────────────────────────────────────────────────────────╮
-# │ SDDM Silent Theme                                                    │
+# │ SDDM Silent Theme                                                     │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 setup_sddm() {
@@ -79,7 +79,7 @@ SDDM_EOF
 }
 
 # ╭───────────────────────────────────────────────────────────────────────╮
-# │ Keyd — Capslock → Escape/Control                                     │
+# │ Keyd — Capslock → Escape/Control                                      │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 setup_keyd() {
@@ -112,10 +112,26 @@ KEYD_EOF
 }
 
 # ╭───────────────────────────────────────────────────────────────────────╮
+# │ 12/24H clock                                                          │
+# ╰───────────────────────────────────────────────────────────────────────╯
+setup_clock () {
+	command -v gum &>/dev/null || return 0
+	echo
+  selected=$(gum choose 12-hour 24-hour --header "24H or 12H clock?") || return 0
+  step "Setting up clock"
+  if [[ "$selected" == "12-hour" ]]; then
+    sed -i 108s/%H/%I/g ~/.config/waybar/config.jsonc
+    sed -i 69s/TIME/TIME12/g ~/.config/hypr/hyprlock.conf
+  fi
+
+}
+
+# ╭───────────────────────────────────────────────────────────────────────╮
 # │ Run                                                                   │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 sed -i 5s/user/"$USER"/g ~/.config/btop/btop.conf
 setup_nvidia
 setup_sddm
+setup_clock
 setup_keyd

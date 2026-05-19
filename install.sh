@@ -52,11 +52,7 @@ source "$SYMPHONY_DIR/install/desktop-entries.sh"
 # Enable user services
 source "$SYMPHONY_DIR/install/services.sh"
 
-# Set zsh as default shell
-# if command -v zsh &>/dev/null; then
-#     sudo chsh -s "$(command -v zsh)" "$user" && ok "shell set to zsh" || warn "failed to set shell"
-# fi
-#
+# Choose login shell
 shells=(
   fish
   zsh
