@@ -6,38 +6,65 @@
 -- ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝
                                       
 -- Laptop multimedia keys for volume and LCD brightness (with OSD)
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(OsdClient .. " --output-volume raise"), { repeating = true, locked = true, description = "Raise volume"} )
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(OsdClient .. " --output-volume lower"), { repeating = true, locked = true, description = "Lower volume"} )
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(OsdClient .. " --output-volume mute-toggle"), { repeating = true, locked = true, description = "Mute volume"} )
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(OsdClient .. " --input-volume mute-toggle"), { repeating = true, locked = true, description = "Mute Mic"} )
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(OsdClient .. " --brightness raise"), { repeating = true, locked = true, description = "Raise brightness"} )
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(OsdClient .. " --brightness lower"), { repeating = true, locked = true, description = "Lower brightness"} )
+hl.bind("XF86AudioRaiseVolume", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --output-volume raise") end,
+  { repeating = true, locked = true, description = "Raise volume"} )
 
-hl.bind("SUPER + F7", hl.dsp.exec_cmd(OsdClient .. " --output-volume raise"), { repeating = true, locked = true, description = "Raise volume"} )
-hl.bind("SUPER + F6", hl.dsp.exec_cmd(OsdClient .. " --output-volume lower"), { repeating = true, locked = true, description = "Lower volume"} )
-hl.bind("SUPER + F10", hl.dsp.exec_cmd(OsdClient .. " --brightness raise"), { repeating = true, locked = true, description = "Raise brightness"} )
-hl.bind("SUPER + F9", hl.dsp.exec_cmd(OsdClient .. " --brightness lower"), { repeating = true, locked = true, description = "Lower brightness"} )
+hl.bind("ALT + XF86AudioRaiseVolume", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --output-volume +1") end,
+  { repeating = true, locked = true, description = "Raise volume (precise)"} )
 
--- Precise 1% multimedia adjustments with Alt modifier
-hl.bind("ALT + XF86AudioRaiseVolume", hl.dsp.exec_cmd(OsdClient .. " --output-volume +1"), { repeating = true, locked = true, description = "Raise volume +1"} )
-hl.bind("ALT + XF86AudioLowerVolume", hl.dsp.exec_cmd(OsdClient .. " --output-volume -1"), { repeating = true, locked = true, description = "lower volume -1"} )
+hl.bind("XF86AudioLowerVolume", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --output-volume lower") end,
+  { repeating = true, locked = true, description = "Lower volume"} )
 
-hl.bind("SUPER + ALT + F7", hl.dsp.exec_cmd(OsdClient .. " --output-volume +1"), { repeating = true, locked = true, description = "Raise volume +1"} )
-hl.bind("SUPER + ALT + F6", hl.dsp.exec_cmd(OsdClient .. " --output-volume -1"), { repeating = true, locked = true, description = "Lower volume -1"} )
+hl.bind("ALT + XF86AudioLowerVolume", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --output-volume -1") end,
+  { repeating = true, locked = true, description = "Lower volume (precise)"} )
 
-hl.bind("ALT + XF86MonBrightnessUp", hl.dsp.exec_cmd(OsdClient .. " --brightness +1"), { repeating = true, locked = true, description = "Raise brightness +1"} )
-hl.bind("ALT + XF86MonBrightnessDown", hl.dsp.exec_cmd(OsdClient .. " --brightness -1"), { repeating = true, locked = true, description = "Lower brightness -1"} )
+hl.bind("XF86AudioMute", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --output-volume mute-toggle") end,
+  { repeating = true, locked = true, description = "Mute audio"} )
 
-hl.bind("SUPER + ALT + F10", hl.dsp.exec_cmd(OsdClient .. " --brightness +1"), { repeating = true, locked = true, description = "Raise brightness +1"} )
-hl.bind("SUPER + ALT + F9", hl.dsp.exec_cmd(OsdClient .. " --brightness -1"), { repeating = true, locked = true, description = "Lower brightness -1"} )
+hl.bind("XF86AudioMicMute", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --input-volume mute-toggle") end,
+  { repeating = true, locked = true, description = "Mute microphone"} )
+
+hl.bind("XF86MonBrightnessUp", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --brightness raise") end,
+  { repeating = true, locked = true, description = "Raise brightness"} )
+
+hl.bind("ALT + XF86MonBrightnessUp", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --brightness +1") end,
+  { repeating = true, locked = true, description = "Raise brightness (precise)"} )
+
+hl.bind("XF86MonBrightnessDown", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --brightness lower") end,
+  { repeating = true, locked = true, description = "Lower brightness"} )
+
+hl.bind("ALT + XF86MonBrightnessDown", function()
+  local monitor = hl.get_active_monitor()
+  hl.exec_cmd("swayosd-client --monitor " .. monitor.name .. " --brightness -1") end,
+  { repeating = true, locked = true, description = "Lower brightness (precise)"} )
+
+
 
 -- mpc
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd(OsdClient .. " mpc next"), {  locked = true, description = "Next track"} )
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd(OsdClient .. " mpc toggle"), {  locked = true, description = "Play/Pause music"} )
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd(OsdClient .. " mpc toggle"), {  locked = true, description = "Play/Pause music"} )
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(OsdClient .. " mpc prev"), {  locked = true, description = "Previous track"} )
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("mpc next"), {  locked = true, description = "Next track"} )
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("mpc toggle"), {  locked = true, description = "Play/Pause music"} )
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("mpc toggle"), {  locked = true, description = "Play/Pause music"} )
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("mpc prev"), {  locked = true, description = "Previous track"} )
 
 -- Switch audio output with Super + Mute
-hl.bind("SUPER + XF86AudioMute", hl.dsp.exec_cmd(ScrDir .. "/audio-switch"), {  locked = true, description = "Change Audio Output"} )
+hl.bind("SUPER + XF86AudioMute", hl.dsp.exec_cmd("~/.local/bin/audio-switch"), {  locked = true, description = "Change Audio Output"} )
 
 
