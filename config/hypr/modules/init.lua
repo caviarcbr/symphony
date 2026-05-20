@@ -1,4 +1,3 @@
-powermenu     = require("modules.powermenu")
 browser       = require("modules.browser")
 waybar        = require("modules.waybar")
 idle          = require("modules.idle")
