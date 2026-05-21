@@ -2,11 +2,11 @@ local M = {}
 
 
 function M.save()
-  os.execute("setsid ~/.local/bin/screenshot >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/screenshot")
 end
 
 function M.clip()
-  os.execute("setsid ~/.local/bin/screenshot smart clipboard >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/screenshot smart clipboard")
 end
 
 return M

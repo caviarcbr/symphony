@@ -2,15 +2,15 @@ local M = {}
 
 
 function M.desk()
-  os.execute("setsid ~/.local/bin/screenrecord --with-desktop-audio >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/screenrecord --with-desktop-audio")
 end
 
 function M.deskmic()
-  os.execute("setsid ~/.local/bin/screenrecord --with-desktop-audio --with-microphone-audio >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/screenrecord --with-desktop-audio --with-microphone-audio")
 end
 
 function M.cam()
-  os.execute("setsid ~/.local/bin/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/screenrecord --with-desktop-audio --with-microphone-audio --with-webcam")
 end
 
 return M

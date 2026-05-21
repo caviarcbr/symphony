@@ -16,20 +16,19 @@ function M.switch(args)
       return
       
     end
-   os.execute(
+   hl.exec_cmd(
           string.format(
-              "setsid %s >/dev/null 2>&1 &",
               cmd
           )
       )
   end
 
   function M.tui()
-    os.execute("setsid kitty --title symphony-tui -e ~/symphony/install/themes/symphony-tui >/dev/null 2>&1 &")
+    hl.exec_cmd("kitty --title symphony-tui -e ~/symphony/install/themes/symphony-tui")
   end
 
   function M.browse()
-    os.execute("setsid kitty --title symphony-browse -e ~/symphony/install/themes/symphony browse >/dev/null 2>&1 &")
+    hl.exec_cmd("kitty --title symphony-browse -e ~/symphony/install/themes/symphony browse")
   end
 
 

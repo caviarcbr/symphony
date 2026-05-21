@@ -103,13 +103,13 @@ hl.bind("SUPER + SHIFT + S", function()
 
 -- Themes
 hl.bind("SUPER + CTRL + SPACE", function()
-  rofi.theme("matugen") end, { description = "Matugen Themes Apply" })
+  rofi.matugen_theme() end, { description = "Matugen Themes Apply" })
 
 hl.bind("SUPER + ALT + SPACE", function()
-  rofi.theme("wall") end, { description = "Wallpaper Picker" })
+  rofi.wall_picker() end, { description = "Wallpaper Picker" })
 
 hl.bind("CTRL + ALT + SPACE", function()
-  rofi.theme("random") end, { description = "Select awww wall" })
+  rofi.random_wallpaper() end, { description = "Select awww wall" })
 
 hl.bind("SUPER + CTRL + SHIFT + SPACE", function()
   symphony.switch() end, { description = "Theme Switcher" })
@@ -145,7 +145,7 @@ hl.bind("SUPER + CTRL + up", function()
   power.reboot() end, { description = "Reboot" })
 
 hl.bind("SUPER + ESCAPE", function()
-  power.menu() end, {description = "Power Menu"})
+  power.powermenu() end, {description = "Power Menu"})
   
 hl.bind("XF86PowerOff", function()
   powermenu.show() end)

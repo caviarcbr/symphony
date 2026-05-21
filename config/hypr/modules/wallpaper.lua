@@ -2,15 +2,15 @@ local M = {}
 
 
 function M.change()
-  os.execute("setsid ~/.local/bin/cycle-wallpaper >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/cycle-wallpaper")
 end
 
 function M.next()
-  os.execute("setsid ~/.local/bin/cycle-wallpaper next >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/cycle-wallpaper next")
 end
 
 function M.prev()
-  os.execute("setsid ~/.local/bin/cycle-wallpaper prev >/dev/null 2>&1 &")
+  hl.exec_cmd("~/.local/bin/cycle-wallpaper prev")
 end
 
 return M
