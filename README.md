@@ -132,6 +132,24 @@ Tweak them in `config/hypr/bindings.lua`.
 
 ---
 
+## Components
+
+| Component     | Tool                                                                        |
+| ------------- | --------------------------------------------------------------------------- |
+| Compositor    | [Hyprland](https://hyprland.org/)                                           |
+| Bar           | [Waybar](https://github.com/Alexays/Waybar)                                 |
+| Launcher      | [Rofi](https://github.com/lbonn/rofi)                                       |
+| Terminal      | [Kitty](https://sw.kovidgoyal.net/kitty/) / [Ghostty](https://ghostty.org/) |
+| Notifications | [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)              |
+| Lock screen   | [Hyprlock](https://github.com/hyprwm/hyprlock)                              |
+| Theme engine  | [Matugen](https://github.com/InioX/matugen)                                 |
+| Music         | [MPD](https://musicpd.org/) + [RMPC](https://github.com/mierak/rmpc)        |
+| Visualizer    | [Cava](https://github.com/karlstav/cava)                                    |
+| Editor        | [Neovim + NvChad](https://neovim.io/)                                                |
+| Shell         | [Fish](https://fishshell.com/) or [zsh](https://zsh.org) + [Starship](https://starship.rs/)           |
+
+---
+
 ## Troubleshooting
 
 
