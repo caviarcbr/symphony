@@ -137,12 +137,27 @@ hl.window_rule({
 	opacity = "1 override 1 override",
 	idle_inhibit = "fullscreen",
 })
+
 hl.window_rule({
 	match = {
-		class = "Steam",
-		title = "Friends list",
+		class = "steam",
+		title = "Friends List",
 	},
+  float = true,
+  center = true,
+  opacity = "1 overrride 1 override",
 	size = "460 800",
+})
+
+hl.window_rule({
+	match = {
+		class = "steam",
+		title = "Steam Settings",
+	},
+  float = true,
+  center = true,
+  opacity = "1 overrride 1 override",
+	size = "1063 798",
 })
 
 -- =============================================================================
