@@ -4,6 +4,7 @@
 DELAY=${1:-4}
 
 themes=(
+  default
 	gruvbox-material
 	tokyo-night
 	rose-pine

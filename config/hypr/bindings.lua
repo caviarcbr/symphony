@@ -9,7 +9,6 @@
 local terminal = "kitty"
 local browser = "~/.local/bin/launch-browser"
 local webapp = "~/.local/bin/launch-webapp"
-OsdClient = [[swayosd-client --monitor "$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')"]]
 
 -- Assign Dir
 RofiDir = "~/.local/bin"

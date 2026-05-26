@@ -9,7 +9,7 @@
 -- Note: You must relaunch Hyprland after changing envs
 
 
-hl.env("MPD_HOST","/run/user/1000/mpd/socket")
+hl.env("MPD_HOST","/run/user/uid/mpd/socket")
 hl.env("EDITOR","nvim")
 
 -- GTK Theme

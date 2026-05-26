@@ -2,7 +2,7 @@
 
 scrDir="$HOME/.local/bin"
 
-options="Shutdown\nReboot\nSuspend\nLogout\nLock"
+options="Shutdown\nReboot\nSuspend\nLogout\nLock\nLaunch Screensaver"
 
 choice=$(echo -e "$options" | rofi -dmenu -p "" -config "$HOME/.config/rofi/custom-rofi/config-powermenu.rasi")
 
@@ -25,5 +25,8 @@ case "$choice" in
 	;;
 "Lock")
   loginctl lock-session
+  ;;
+"Launch Screensaver")
+  screensaver-launch
   ;;
 esac

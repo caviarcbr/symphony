@@ -82,7 +82,7 @@ packages=(
 	kitty alacritty fish starship tmux
 	eza bat fd ripgrep fzf zoxide jq
 	yazi nautilus feh mpv 
-	neovim lazygit
+	neovim lazygit noto-fonts-cjk
 	grim slurp satty wl-clipboard gpu-screen-recorder ffmpeg v4l-utils
 	cliphist wl-clip-persist
 	pipewire pipewire-alsa pipewire-pulse wireplumber
@@ -183,6 +183,7 @@ ask_applications() {
 	step "Installing applications"
 	do_install $selected
 }
+
 
 step "Installing packages"
 
